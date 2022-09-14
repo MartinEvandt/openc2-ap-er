@@ -1,4 +1,6 @@
+
 ![OASIS Logo](http://docs.oasis-open.org/templates/OASISLogo-v3.0.png)
+
 -------
 
 # OpenC2 Actuator Profile for Endpoint Response Version 1.0
@@ -6,6 +8,8 @@
 ## Committee Specification Draft 01
 
 ## 02 December 2020
+
+&nbsp;
 
 <!-- URI list start (commented out except during publication by OASIS TC Admin)
 
@@ -37,19 +41,23 @@ Martin Evandt (martifev@ifi.uio.no), [University of Oslo](https://www.uio.no/eng
 
 #### Related work:
 This specification is related to:
-* Open Command and Control (OpenC2) Language Specification Version 1.0 ([[OpenC2-Lang-v1.0]](#openc2-lang-v10))
+* _Open Command and Control (OpenC2) Language Specification Version 1.0_. Edited by Jason Romano and Duncan Sparrell. Latest stage: https://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html.
 
 #### Abstract:
-Open Command and Control (OpenC2) is a concise and extensible language to enable the command and control of cyber defense components, subsystems and/or systems in a manner that is agnostic of the underlying products, technologies, transport mechanisms or other aspects of the implementation. Endpoint Detection and Response (EDR) technologies provide a means for monitoring of system events as well as respond to alerts in order to more readily identify, detect, mitigate and remediate, or prevent advanced threats. This Actuator Profile defines OpenC2 Actions, Targets, Specifiers, and Command Arguments in the context of response functionalities found in EDR technologies. The Endpoint Response (ER) specification is consistent with Version 1.0 of the OpenC2 Language Specification ([[OpenC2-Lang-v1.0]](#openc2-lang-v10)).
+An 'Endpoint Detection and Response' (EDR) system is a security mechanism which identifies malicious behaviors by recording system activities and comparing them to sets of signatures or heuristics. EDR systems facilitate in digital forensics and incident response by storing and indexing said events, and provide functionality to respond to security incidents as they pertain to actively exploited, infected or vulnerable endpoints.
+
+This actuator profile defines the OpenC2 Actions, Targets, Arguments, and Specifiers along with conformance clauses to enable the operation of OpenC2 Producers and Consumers in the context of the response functionalities found in EDR technologies. It covers the ability to respond to incidents by facilitating the containment of devices and files, stopping and restarting devices, denying devices from communicating with or storing files, IPv4-, IPv6- and domain name addresses using atomic indicators, the manipulation of files, registry entries, services and user accounts, and the initialization of anti-malware scans.
+
+Open Command and Control (OpenC2) is an effort to rigorously standardize command and control of vital cyber defense systems. OpenC2 is a concise and extensible language to enable the command and control of cyber defense components, subsystems and/or systems in a manner that is agnostic of the underlying products, technologies, transport mechanisms or other aspects of the implementation.
 
 #### Status:
-This document was last revised or approved by the OASIS Open Command and Control (OpenC2) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
+This document was last revised or approved by the OASIS Open Command and Control (OpenC2) TC on the above date. The level of approval is also listed above. Check the "Latest stage" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
 
-TC members should send comments on this specification to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
+TC members should send comments on this specification to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "[Send A Comment](https://www.oasis-open.org/committees/comments/index.php?wg_abbrev=)" button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
 
-This specification is provided under the [Non-Assertion](https://www.oasis-open.org/policies-guidelines/ipr#Non-Assertion-Mode) Mode of the OASIS  R Policy, the mode chosen when the Technical Committee was established. For information on whether any patents have been disclosed that may be essential to implementing this specification, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the TC's web page (https://www.oasis-open.org/committees/openc2/ipr.php).
+This specification is provided under the [Non-Assertion](https://www.oasis-open.org/policies-guidelines/ipr/#Non-Assertion-Mode) Mode of the OASIS IPR Policy, the mode chosen when the Technical Committee was established. For information on whether any patents have been disclosed that may be essential to implementing this specification, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the TC's web page (https://www.oasis-open.org/committees/openc2/ipr.php).
 
-Note that any machine-readable content ([Computer Language Definitions](https://www.oasis-open.org/policies-guidelines/tc-process#wpComponentsCompLang)) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
+Note that any machine-readable content ([Computer Language Definitions](https://www.oasis-open.org/policies-guidelines/tc-process-2017-05-26/#wpComponentsCompLang)) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
 
 #### Key words:
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] and [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
@@ -59,104 +67,156 @@ When referencing this specification the following citation format should be used
 
 **[AP-ER-v1.0]**
 
-_OpenC2 Actuator Profile for Endpoint Detection and Response Version 1.0_. Edited by Vasileios Mavroeidis and Martin Evandt. 02 December 2020. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/ap-er/v1.0/csd01/ap-er-v1.0-csd01.html. Latest version: https://docs.oasis-open.org/openc2/ap-er/v1.0/ap-er-v1.0.html.
+_OpenC2 Actuator Profile for Endpoint Response Version 1.0_. Edited by Vasileios Mavroeidis and Martin Evandt. 02 December 2020. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/ap-er/v1.0/csd01/ap-er-v1.0-csd01.html. Latest stage: https://docs.oasis-open.org/openc2/ap-er/v1.0/ap-er-v1.0.html.
 
--------
+#### Notices
+Copyright © OASIS Open 2022. All Rights Reserved.
 
-## Notices
-Copyright © OASIS Open 2020. All Rights Reserved.
-
-Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr).
+Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr/).
 
 The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs.
 
-For complete copyright information please see the Notices section in the Appendix.
+For complete copyright information please see the full Notices section in an Appendix below.
 
 -------
 
 # Table of Contents
 - [1 Introduction](#1-introduction)
-  - [1.1 IPR Policy](#11-ipr-policy)
-  - [1.2 Terminology](#12-terminology)
-  - [1.3 Glossary](#13-glossary)
-    - [1.3.1 Definitions of terms](#131-definitions-of-terms)
-    - [1.3.2 Acronyms and abbreviations](#132-acronyms-and-abbreviations)
-  - [1.4 Document Conventions](#14-document-conventions)
-    - [1.4.1 Naming Conventions](#141-naming-conventions)
-    - [1.4.2 Font Colors and Style](#142-font-colors-and-style)
-  - [1.5 Overview](#15-overview)
-  - [1.6 Goal](#16-goal)
-  - [1.7 Purpose and Scope](#17-purpose-and-scope)
+  - [1.1 Changes from earlier versions](#11-changes-from-earlier-versions)
+  - [1.2 Glossary](#12-glossary)
+    - [1.2.1 Definitions of terms](#121-definitions-of-terms)
+    - [1.2.2 Acronyms and abbreviations](#122-acronyms-and-abbreviations)
+    - [1.2.3 Document Conventions](#123-document-conventions)
+      - [1.2.3.1 Naming Conventions](#1231-naming-conventions)
+      - [1.2.3.2 Font Colors and Style](#1232-font-colors-and-style)
 - [2 OpenC2 Language Binding for Endpoint Response](#2-openc2-language-binding-for-endpoint-response)
   - [2.1 OpenC2 Command Components](#21-openc2-command-components)
     - [2.1.1 Actions](#211-actions)
     - [2.1.2 Targets](#212-targets)
+      - [2.1.2.1 Common Targets](#2121-common-targets)
+      - [2.1.2.2 ER Targets](#2122-er-targets)
     - [2.1.3 Type Definitions](#213-type-definitions)
+      - [2.1.3.1 Target Types](#2131-target-types)
     - [2.1.4 Command Arguments](#214-command-arguments)
     - [2.1.5 Actuator Specifiers](#215-actuator-specifiers)
   - [2.2 OpenC2 Response Components](#22-openc2-response-components)
     - [2.2.1 Response Status Codes](#221-response-status-codes)
   - [2.3 OpenC2 Commands](#23-openc2-commands)
-    - [2.3.1 Query](#231-query)
-    - [2.3.2 Deny](#232-deny)
-    - [2.3.3 Contain](#233-contain)
-    - [2.3.4 Allow](#234-allow)
-    - [2.3.5 Start](#235-start)
-    - [2.3.6 Stop](#236-stop)
-    - [2.3.7 Restart](#237-restart)
-    - [2.3.8 Set](#238-set)
-    - [2.3.9 Update](#239-update)
-    - [2.3.10 Create](#2310-create)
-    - [2.3.11 Delete](#2311-delete)
-- [3 Conformance statements](#3-conformance-statements)
+    - [2.3.1 Scan](#231-scan)
+      - [2.3.1.1 Scan device](#2311-scan-device)
+    - [2.3.2 Query](#232-query)
+      - [2.3.2.1 Query features](#2321-query-features)
+    - [2.3.3 Deny](#233-deny)
+      - [2.3.2.1 Deny domain_name](#2321-deny-domain_name)
+      - [2.3.2.2 Deny file](#2322-deny-file)
+      - [2.3.2.3 Deny ipv4_net](#2323-deny-ipv4_net)
+      - [2.3.2.4 Deny ipv6_net](#2324-deny-ipv6_net)
+    - [2.3.4 Contain](#234-contain)
+      - [2.3.4.1 Contain device](#2341-contain-device)
+      - [2.3.4.2 Contain file](#2342-contain-file)
+    - [2.3.5 Allow](#235-allow)
+      - [2.3.5.1 Allow domain_name](#2351-allow-domain_name)
+      - [2.3.5.2 Allow device](#2352-allow-device)
+      - [2.3.5.3 Allow file](#2353-allow-file)
+      - [2.3.5.4 Allow ipv4_net](#2354-allow-ipv4_net)
+      - [2.3.5.5 Allow ipv6_net](#2355-allow-ipv6_net)
+    - [2.3.6 Start](#236-start)
+      - [2.3.6.1 Start file](#2361-start-file)
+    - [2.3.7 Stop](#237-stop)
+      - [2.3.7.1 Stop device](#2371-stop-device)
+      - [2.3.7.2 Stop process](#2372-stop-process)
+      - [2.3.7.3 Stop er:service](#2373-stop-erservice)
+    - [2.3.8 Restart](#238-restart)
+      - [2.3.8.1 Restart device](#2381-restart-device)
+    - [2.3.9 Set](#239-set)
+      - [2.3.9.1 Set ipv4_net](#2391-set-ipv4_net)
+      - [2.3.9.2 Set ipv6_net](#2392-set-ipv6_net)
+      - [2.3.9.3 Set er:registry_entry](#2393-set-erregistry_entry)
+      - [2.3.9.4 Set er:account](#2394-set-eraccount)
+    - [2.3.10 Update](#2310-update)
+      - [2.3.10.1 Update file](#23101-update-file)
+    - [2.3.11 Create](#2311-create)
+      - [2.3.11.1 Create er:registry_entry](#23111-create-erregistry_entry)
+    - [2.3.12 Delete](#2312-delete)
+      - [2.3.12.1 Delete file](#23121-delete-file)
+      - [2.3.12.2 Delete er:registry_entry](#23122-delete-erregistry_entry)
+      - [2.3.12.3 Delete er:service](#23123-delete-erservice)
+- [3 Conformance](#3-conformance)
   - [3.1 Clauses Pertaining to the OpenC2 Producer Conformance Target](#31-clauses-pertaining-to-the-openc2-producer-conformance-target)
     - [3.1.1 Conformance Clause 1: Baseline OpenC2 Producer](#311-conformance-clause-1-baseline-openc2-producer)
-    - [3.1.2 Conformance Clause 2: Contain Device Producer](#312-conformance-clause-2-contain-device-producer)
-    - [3.1.3 Conformance Clause 3: device-containment Producer](#313-conformance-clause-3-device-containment-producer)
-    - [3.1.4 Conformance Clause 4: Stop Device Producer](#314-conformance-clause-4-stop-device-producer)
-    - [3.1.5 Conformance Clause 5: Restart Device Producer](#315-conformance-clause-5-restart-device-producer)
-    - [3.1.6 Conformance Clause 6: Deny File Producer](#316-conformance-clause-6-deny-file-producer)
-    - [3.1.7 Conformance Clause 7: Contain File Producer](#317-conformance-clause-7-contain-file-producer)
-    - [3.1.8 Conformance Clause 8: Allow/Deny IPv4 Net Producer](#318-conformance-clause-8-allowdeny-ipv4-net-producer)
-    - [3.1.9 Conformance Clause 9: Allow/Deny IPv6 Net Producer](#319-conformance-clause-9-allowdeny-ipv6-net-producer)
-    - [3.1.10 Conformance Clause 10: Set IPv4 Net Producer](#3110-conformance-clause-10-set-ipv4-net-producer)
-    - [3.1.11 Conformance Clause 11: Set IPv6 Net Producer](#3111-conformance-clause-11-set-ipv6-net-producer)
-    - [3.1.12 Conformance Clause 12: Process Producer](#3112-conformance-clause-12-process-producer)
-    - [3.1.13 Conformance Clause 13: Registry Entry Producer](#3113-conformance-clause-13-registry-entry-producer)
-    - [3.1.14 Conformance Clause 14: Account Producer](#3114-conformance-clause-14-account-producer)
-    - [3.1.15 Conformance Clause 15: Account-Status Producers](#3115-conformance-clause-15-account-status-producers)
-    - [3.1.16 Conformance Clause 16: Service Producer](#3116-conformance-clause-16-service-producer)
+    - [3.1.2 Conformance Clause 2: Downstream Device Producer](#312-conformance-clause-2-downstream-device-producer)
+    - [3.1.3 Conformance Clause 3: Domain Name Producer](#313-conformance-clause-3-domain-name-producer)
+    - [3.1.4 Conformance Clause 4: Scan Device Producer](#314-conformance-clause-4-scan-device-producer)
+    - [3.1.5 Conformance Clause 5: Scan Depth Producer](#315-conformance-clause-5-scan-depth-producer)
+    - [3.1.6 Conformance Clause 6: Periodic Scan Producer](#316-conformance-clause-6-periodic-scan-producer)
+    - [3.1.7 Conformance Clause 7: Contain Device Producer](#317-conformance-clause-7-contain-device-producer)
+    - [3.1.8 Conformance Clause 8: Permitted Addresses Producer](#318-conformance-clause-8-permitted-addresses-producer)
+    - [3.1.9 Conformance Clause 9: Allow Device Producer](#319-conformance-clause-9-allow-device-producer)
+    - [3.1.10 Conformance Clause 10: Stop Device Producer](#3110-conformance-clause-10-stop-device-producer)
+    - [3.1.11 Conformance Clause 11: Restart Device Producer](#3111-conformance-clause-11-restart-device-producer)
+    - [3.1.12 Conformance Clause 12: Deny File Producer](#3112-conformance-clause-12-deny-file-producer)
+    - [3.1.13 Conformance Clause 13: Contain File Producer](#3113-conformance-clause-13-contain-file-producer)
+    - [3.1.14 Conformance Clause 14: Allow File Producer](#3114-conformance-clause-14-allow-file-producer)
+    - [3.1.15 Conformance Clause 15: Start File Producer](#3115-conformance-clause-15-start-file-producer)
+    - [3.1.16 Conformance Clause 16: Deny IPv4 Net Producer](#3116-conformance-clause-16-deny-ipv4-net-producer)
+    - [3.1.17 Conformance Clause 17: Allow IPv4 Net Producer](#3117-conformance-clause-17-allow-ipv4-net-producer)
+    - [3.1.18 Conformance Clause 18: Set IPv4 Net Producer](#3118-conformance-clause-18-set-ipv4-net-producer)
+    - [3.1.19 Conformance Clause 19: Deny IPv6 Net Producer](#3119-conformance-clause-19-deny-ipv6-net-producer)
+    - [3.1.20 Conformance Clause 20: Allow IPv6 Net Producer](#3120-conformance-clause-20-allow-ipv6-net-producer)
+    - [3.1.21 Conformance Clause 21: Set IPv6 Net Producer](#3121-conformance-clause-21-set-ipv6-net-producer)
+    - [3.1.22 Conformance Clause 22: Stop Process Producer](#3122-conformance-clause-22-stop-process-producer)
+    - [3.1.23 Conformance Clause 23: Set Registry Entry Producer](#3123-conformance-clause-23-set-registry-entry-producer)
+    - [3.1.24 Conformance Clause 24: Create Registry Entry Producer](#3124-conformance-clause-24-create-registry-entry-producer)
+    - [3.1.25 Conformance Clause 25: Delete Registry Entry Producer](#3125-conformance-clause-25-delete-registry-entry-producer)
+    - [3.1.26 Conformance Clause 26: Set Account Producer](#3126-conformance-clause-26-set-account-producer)
+    - [3.1.27 Conformance Clause 27: Account Status Producers](#3127-conformance-clause-27-account-status-producers)
+    - [3.1.28 Conformance Clause 28: Stop Service Producer](#3128-conformance-clause-28-stop-service-producer)
+    - [3.1.29 Conformance Clause 29: Delete Service Producer](#3129-conformance-clause-29-delete-service-producer)
   - [3.2 Clauses Pertaining to the OpenC2 Consumer Conformance Target](#32-clauses-pertaining-to-the-openc2-consumer-conformance-target)
-    - [3.2.1 Conformance Clause 17: Baseline OpenC2 Consumer](#321-conformance-clause-17-baseline-openc2-consumer)
-    - [3.2.2 Conformance Clause 18: Contain Device Consumer](#322-conformance-clause-18-contain-device-consumer)
-    - [3.2.3 Conformance Clause 19: device-containment Consumer](#323-conformance-clause-19-device-containment-consumer)
-    - [3.2.4 Conformance Clause 20: Stop Device Consumer](#324-conformance-clause-20-stop-device-consumer)
-    - [3.2.5 Conformance Clause 21: Restart Device Consumer](#325-conformance-clause-21-restart-device-consumer)
-    - [3.2.6 Conformance Clause 22: Deny File Consumer](#326-conformance-clause-22-deny-file-consumer)
-    - [3.2.7 Conformance Clause 23: Contain File Consumer](#327-conformance-clause-23-contain-file-consumer)
-    - [3.2.8 Conformance Clause 24: Allow/Deny IPv4 Net Consumer](#328-conformance-clause-24-allowdeny-ipv4-net-consumer)
-    - [3.2.9 Conformance Clause 25: Allow/Deny IPv6 Net Consumer](#329-conformance-clause-25-allowdeny-ipv6-net-consumer)
-    - [3.2.10 Conformance Clause 26: Set IPv4 Net Consumer](#3210-conformance-clause-26-set-ipv4-net-consumer)
-    - [3.2.11 Conformance Clause 27: Set IPv6 Net Consumer](#3211-conformance-clause-27-set-ipv6-net-consumer)
-    - [3.2.12 Conformance Clause 28: Process Consumer](#3212-conformance-clause-28-process-consumer)
-    - [3.2.13 Conformance Clause 29: Registry Entry Consumer](#3213-conformance-clause-29-registry-entry-consumer)
-    - [3.2.14 Conformance Clause 30: Account Consumer](#3214-conformance-clause-30-account-consumer)
-    - [3.2.15 Conformance Clause 31: Account-Status Consumer](#3215-conformance-clause-31-account-status-consumer)
-    - [3.2.16 Conformance Clause 32: Service Consumer](#3216-conformance-clause-32-service-consumer)
-- [Annex A: Sample Commands](#annex-a-sample-commands)
+    - [3.2.1 Conformance Clause 30: Baseline OpenC2 Consumer](#321-conformance-clause-30-baseline-openc2-consumer)
+    - [3.2.2 Conformance Clause 31: Downstream Device Consumer](#322-conformance-clause-31-downstream-device-consumer)
+    - [3.2.3 Conformance Clause 32: Domain Name Consumer](#323-conformance-clause-32-domain-name-consumer)
+    - [3.2.4 Conformance Clause 33: Scan Device Consumer](#324-conformance-clause-33-scan-device-consumer)
+    - [3.2.5 Conformance Clause 34: Scan Depth Consumer](#325-conformance-clause-34-scan-depth-consumer)
+    - [3.2.6 Conformance Clause 35: Periodic Scan Consumer](#326-conformance-clause-35-periodic-scan-consumer)
+    - [3.2.7 Conformance Clause 36: Contain Device Consumer](#327-conformance-clause-36-contain-device-consumer)
+    - [3.2.8 Conformance Clause 37: Permitted Addresses Consumer](#328-conformance-clause-37-permitted-addresses-consumer)
+    - [3.2.9 Conformance Clause 38: Allow Device Consumer](#329-conformance-clause-38-allow-device-consumer)
+    - [3.2.10 Conformance Clause 39: Stop Device Consumer](#3210-conformance-clause-39-stop-device-consumer)
+    - [3.2.11 Conformance Clause 40: Restart Device Consumer](#3211-conformance-clause-40-restart-device-consumer)
+    - [3.2.12 Conformance Clause 41: Deny File Consumer](#3212-conformance-clause-41-deny-file-consumer)
+    - [3.2.13 Conformance Clause 42: Contain File Consumer](#3213-conformance-clause-42-contain-file-consumer)
+    - [3.2.14 Conformance Clause 43: Allow File Consumer](#3214-conformance-clause-43-allow-file-consumer)
+    - [3.2.15 Conformance Clause 44: Start File Consumer](#3215-conformance-clause-44-start-file-consumer)
+    - [3.2.16 Conformance Clause 45: Deny IPv4 Net Consumer](#3216-conformance-clause-45-deny-ipv4-net-consumer)
+    - [3.2.17 Conformance Clause 46: Allow IPv4 Net Consumer](#3217-conformance-clause-46-allow-ipv4-net-consumer)
+    - [3.2.18 Conformance Clause 47: Set IPv4 Net Consumer](#3218-conformance-clause-47-set-ipv4-net-consumer)
+    - [3.2.19 Conformance Clause 48: Deny IPv6 Net Consumer](#3219-conformance-clause-48-deny-ipv6-net-consumer)
+    - [3.2.20 Conformance Clause 49: Allow IPv6 Net Consumer](#3220-conformance-clause-49-allow-ipv6-net-consumer)
+    - [3.2.21 Conformance Clause 50: Set IPv6 Net Consumer](#3221-conformance-clause-50-set-ipv6-net-consumer)
+    - [3.2.22 Conformance Clause 51: Stop Process Consumer](#3222-conformance-clause-51-stop-process-consumer)
+    - [3.2.23 Conformance Clause 52: Set Registry Entry Consumer](#3223-conformance-clause-52-set-registry-entry-consumer)
+    - [3.2.24 Conformance Clause 53: Create Registry Entry Consumer](#3224-conformance-clause-53-create-registry-entry-consumer)
+    - [3.2.25 Conformance Clause 54: Delete Registry Entry Consumer](#3225-conformance-clause-54-delete-registry-entry-consumer)
+    - [3.2.26 Conformance Clause 55: Set Account Consumer](#3226-conformance-clause-55-set-account-consumer)
+    - [3.2.27 Conformance Clause 56: Account Status Consumers](#3227-conformance-clause-56-account-status-consumers)
+    - [3.2.28 Conformance Clause 57: Stop Service Consumer](#3228-conformance-clause-57-stop-service-consumer)
+    - [3.2.29 Conformance Clause 58: Delete Service Consumer](#3229-conformance-clause-58-delete-service-consumer)
+- [Appendix A. References](#appendix-a-references)
+  - [A.1 Normative References](#a1-normative-references)
+  - [A.2 Informative References](#a2-informative-references)
+- [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+  - [B.1 Participants](#b1-participants)
+- [Appendix C. Revision History](#appendix-c-revision-history)
+- [Appendix D: Sample Commands](#appendix-d-sample-commands)
   - [A.1 deny, contain and allow](#a1-deny-contain-and-allow)
     - [A.1.1 Ban a binary by hash on every endpoint](#a11-ban-a-binary-by-hash-on-every-endpoint)
     - [A.1.2 Network isolate a specific endpoint](#a12-network-isolate-a-specific-endpoint)
+    - [A.1.X Network isolate an endpoint, but allow communication with selected IP and domain name addresses](#a1x-network-isolate-an-endpoint-but-allow-communication-with-selected-ip-and-domain-name-addresses)
     - [A.1.3 Allow unrestricted app execution on a group of endpoints](#a13-allow-unrestricted-app-execution-on-a-group-of-endpoints)
   - [A.2 Set](#a2-set)
     - [A.2.1 Set an account on a specific endpoint to be enabled](#a21-set-an-account-on-a-specific-endpoint-to-be-enabled)
     - [A.2.1 Set accounts on a group of endpoints to be disabled](#a21-set-accounts-on-a-group-of-endpoints-to-be-disabled)
-- [Appendix A. References](#appendix-a-references)
-  - [A.1 Normative References](#a1-normative-references)
-  <!-- [A.2 Informative References](#a2-informative-references) -->
-- [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
-  - [B.1 Participants](#b1-participants)
-- [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Notices](#appendix-d-notices)
 
 -------
@@ -165,53 +225,86 @@ For complete copyright information please see the Notices section in the Appendi
 
 _The content in this section is non-normative, except where it is marked normative._
 
-OpenC2 is a suite of specifications that enables command and control of cyber defense systems and components. OpenC2 typically uses a request-response paradigm where a _Command_ is encoded by a _Producer_ (managing application) and transferred to a _Consumer_ (managed device or virtualized function) using a secure transfer protocol, and the Consumer can respond with status and any requested information.
+**Note:** This Actuator profile is consistent with Version 1.0 of the OpenC2 Language Specification [\[OpenC2-Lang-v1.0\]](#openc2-lang-v1.0).
 
-OpenC2 allows the application producing the commands to discover the set of capabilities supported by the managed devices. These capabilities permit the managing application to adjust its behavior to take advantage of the features exposed by the managed device. The capability definitions can be easily extended in a noncentralized manner, allowing standard and non-standard capabilities to be defined with semantic and syntactic rigor.
+OpenC2 is a suite of specifications that enables command and control of cyber defense systems and components. OpenC2 typically uses a request-response paradigm where a Command is encoded by a Producer (managing application) and transferred to a Consumer (managed device or virtualized function) using a secure transfer protocol, and the Consumer acts on the request and responds with status and any other requested information.
 
-## 1.1 IPR Policy
-This specification is provided under the [Non-Assertion](https://www.oasis-open.org/policies-guidelines/ipr#Non-Assertion-Mode) Mode of the [OASIS IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr), the mode chosen when the Technical Committee was established. For information on whether any patents have been disclosed that may be essential to implementing this specification, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the TC's web page ([https://www.oasis-open.org/committees/openc2/ipr.php](https://www.oasis-open.org/committees/openc2/ipr.php)).
+This Actuator profile specifies the set of Actions, Targets, Specifiers, and Command Arguments that integrates the response functionalities of EDR systems with the Open Command and Control (OpenC2) Command set. Through this Command set, cyber security orchestrators may gain visibility into and provide control over the ER functionality in a manner that is independent of the instance of the EDR solution.
 
-## 1.2 Terminology
+All components, devices and systems that provide ER functionality MUST implement the OpenC2 Actions, Targets, Specifiers and Arguments identified as required in this document.
 
+Though cyber defense components, devices, systems and/or instances may implement multiple Actuator profiles, a particular OpenC2 Message may reference at most a single Actuator profile. The scope of this document is limited to ER.
+
+The purpose of this document is to:
+
+* Identify the required and optional OpenC2 Actions for Actuators with ER functionality
+* Identify the required and optional Target types for each Action in the ER class of Actuators
+* Identify Actuator-Specifiers and Arguments for each Action/Target pair that are applicable and/or unique to the ER class of Actuators
+* Annotate each Action/Target pair with a justification and example, and provide sample OpenC2 Commands to a ER with corresponding Responses
+
+This ER profile:
+
+* Does not define or implement Actions beyond those defined in Version 1.0 of the [[OpenC2-Lang-v1.0]](#openc2-lang-v10)
+* Is consistent with Version 1.0 of the OpenC2 Language Specification
+
+Cyber defense systems that are utilizing OpenC2 may require the following components to implement the ER profile:
+
+* OpenC2 Producers: Devices that send Commands, receive Responses, and manage the execution of Commands involving one or more ER or other Actuators with ER capability. The OpenC2 Producer needs _a prior_ knowledge of which Commands the Actuator can process and execute, therefore must understand the profiles for any device that it intends to command
+* OpenC2 Consumers: Devices or instances that provide endpoint detection and response functions. Typically these are Actuators that execute the cyber defense function, but could be orchestrators (i.e., a device or instance that forwards Commands to the Actuator)
+
+## 1.1 Changes from earlier versions
+This is the initial version of this specifciation.
+
+## 1.2 Glossary
+
+### 1.2.1 Definitions of terms
 _This section is normative._
 
-* **Action**: The task or activity to be performed (e.g., 'deny').
-* **Actuator**: The function performed by the Consumer that executes the Command (e.g., 'Endpoint Response').
-* **Argument**: A property of a Command that provides additional information on how to perform the Command, such as date/time, periodicity, duration, etc.
-* **Command**: A Message defined by an Action-Target pair that is sent from a Producer and received by a Consumer.
-* **Consumer**: A managed device / application that receives Commands. Note that a single device / application can have both Consumer and Producer capabilities.
-* **Message**: A content- and transport-independent set of elements conveyed between Consumers and Producers.
-* **Producer**: A manager application that sends Commands.
-* **Response**: A Message from a Consumer to a Producer acknowledging a Command or returning the requested resources or status to a previously received Command.
-* **Specifier**: A property or field that identifies a Target or Actuator to some level of precision.
-* **Target**: The object of the Action, i.e., the Action is performed on the Target (e.g., device).
+- **Action**: The task or activity to be performed (e.g., 'deny').
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [[RFC2119]](#rfc2119) and [[RFC8174]](#rfc8174) when, and only when, they appear in all capitals, as shown here.
+- **Actuator**: The function performed by the Consumer that executes the Command (e.g., 'Endpoint Response').
 
-## 1.3 Glossary
+- **Argument**: A property of a Command that provides additional information on how to perform the Command, such as date/time, periodicity, duration, etc.
 
-### 1.3.1 Definitions of terms
-* **Agent**: A utility or suite of utilities with the capability to carry out EDR response functionalities on devices where the Agent is present and operational.
-* **Endpoint**: A computing device capable of executing code and communicating with networks (e.g., desktop or laptop computers, servers, mobile devices). Use of this term within this Actuator Profile implies that the Endpoint has an Agent present and operational on it.
+- **Command**: A Message defined by an Action-Target pair that is sent from a Producer and received by a Consumer.
 
-### 1.3.2 Acronyms and abbreviations
+- **Consumer**: A managed device / application that receives Commands. Note that a single device / application can have both Consumer and Producer capabilities.
+
+- **Message**: A content- and transport-independent set of elements conveyed between Consumers and Producers.
+
+- **Producer**: A manager application that sends Commands.
+
+- **Response**: A Message from a Consumer to a Producer acknowledging a Command or returning the requested resources or status to a previously received Command.
+
+- **Specifier**: A property or field that identifies a Target or Actuator to some level of precision.
+
+- **Target**: The object of the Action, i.e., the Action is performed on the Target (e.g., device).
+
+- **Agent**: A utility or suite of utilities with the capability to carry out EDR response functionalities on devices where the Agent is present and operational.
+
+- **Endpoint**: A computing device capable of executing code and communicating with networks (e.g., desktop or laptop computers, servers, mobile devices). Use of this term within this Actuator Profile implies that the Endpoint has an Agent present and operational on it.
+
+### 1.2.2 Acronyms and abbreviations
 _This section is non-normative_
 
-| Term | Expansion |
-|:---|:---|
-| EDR | Endpoint Detection and Response |
-| ER | Endpoint Response |
+| Term | Expansion                       |
+|:---  |:---                             |
+| EDR  | Endpoint Detection and Response |
+| ER   | Endpoint Response               |
+| RFC  | Request For Comment             |
 
 
-## 1.4 Document Conventions
-### 1.4.1 Naming Conventions
-* [[RFC2119]](#rfc2119)/[[RFC8174]](#rfc8174) key words (see [Section 1.2](#12-terminology)) are in all uppercase.
-* All property names and literals are in lowercase, except when referencing canonical names defined in another standard (e.g., literal values from an IANA registry).
-* Words in property names are separated with an underscore (_), while words in string enumerations and type names are separated with a hyphen (-).
-* The term "hyphen" used here refers to the ASCII hyphen or minus character, which in Unicode is "hyphen-minus", U+002D.
+### 1.2.3 Document Conventions
+#### 1.2.3.1 Naming Conventions
+- [[RFC2119]](#rfc2119)/[[RFC8174]](#rfc8174) key words are in all uppercase.
 
-### 1.4.2 Font Colors and Style
+- All property names and literals are in lowercase, except when referencing canonical names defined in another standard (e.g., literal values from an IANA registry).
+
+- Words in property names are separated with an underscore (_), while words in string enumerations and type names are separated with a hyphen (-).
+
+- The term "hyphen" used here refers to the ASCII hyphen or minus character, which in Unicode is "hyphen-minus", U+002D.
+
+#### 1.2.3.2 Font Colors and Style
 The following color, font and font style conventions are used in this document:
 
 * A fixed width font is used for all type names, property names, and literals.
@@ -233,95 +326,6 @@ Example:
     }
 }
 ```
-
-## 1.5 Overview
-In general, there are two types of participants involved in the exchange of OpenC2 Messages, as depicted in Figure 1-1:
-1. **Producers**: A Producer is an entity that creates Commands to provide instruction to one or more systems to act in accordance with the content of the Command. A Producer may receive and process Responses in conjunction with a Command.
-2. **Consumers**: A Consumer is an entity that receives and may act upon a Command. A Consumer may create Responses that provide any information captured or necessary to send back to the Producer.
-
-![OpenC2 Message Exchange](images/image_1.png)
-
-**Figure 1-1. OpenC2 Message Exchange**
-
-OpenC2 is a suite of specifications for Producers and Consumers to command and execute cyber defense functions. These specifications include the OpenC2 Language Specification, Actuator Profiles, and Transfer Specifications. The OpenC2 Language Specification and Actuator Profile specifications focus on the language content and meaning at the Producer and Consumer of the Command and Response while the transfer specifications focus on the protocols for their exchange.
-* The **OpenC2 Language Specification ([[OpenC2-Lang-v1.0]](#openc2-lang-v10))** provides the semantics for the essential elements of the language, the structure for Commands and Responses, and the schema that defines the proper syntax for the language elements that represents the Command or Response.
-* **OpenC2 Actuator Profiles** specify the subset of the OpenC2 language relevant in the context of specific Actuator functions. Cyber defense components, devices, systems and/or instances may (in fact are likely to) implement multiple Actuator profiles. Actuator profiles extend the language by defining Specifiers that identify the Actuator to the required level of precision. Actuator Profiles may define Command Arguments and Targets that are relevant and/or unique to those Actuator functions.
-* **OpenC2 Transfer Specifications** utilize existing protocols and standards to implement OpenC2 in specific environments. These standards are used for communications and security functions beyond the scope of the language, such as message transfer encoding, authentication, and end-to-end transport of OpenC2 Messages.
-
-The OpenC2 Language Specification defines a language used to compose Messages for command and control of cyber defense systems and components. A Message consists of a header and a payload (_defined_ as a Message body in the OpenC2 Language Specification Version 1.0 and _specified_ in one or more Actuator profiles).
-
-The language defines two payload structures:
-
-1. **Command**: An instruction from one system known as the Producer, to one or more systems, the Consumer(s), to act on the content of the Command.
-2. **Response**: Any information sent back to the Producer as a result of the Command.
-
-OpenC2 implementations integrate the related OpenC2 specifications described above with related industry specifications, protocols, and standards. Figure 1-2 depicts the relationships among OpenC2 specifications, and their relationships to other industry standards and environment-specific implementations of OpenC2. Note that the layering of implementation aspects in the diagram is notional, and not intended to preclude any particular approach to implementing the needed functionality (for example, the use of an application-layer message signature function to provide message source authentication and integrity).
-
-![OpenC2 Documentation and Layering Model](images/image_2.png)
-
-**Figure 1-2. OpenC2 Documentation and Layering Model**
-
-OpenC2 is conceptually partitioned into four layers as shown in Table 1-1.
-
-**Table 1-1. OpenC2 Protocol Layers**
-
-| Layer | Examples |
-| :--- | :--- |
-| Function-Specific Content | Actuator Profiles<br>(standard and extensions) |
-| Common Content | Language Specification<br>[[OpenC2-Lang-v1.0]](#openc2-lang-v10) |
-| Message | Transfer Specifications<br>([[OpenC2-HTTPS-v1.0]](#openc2-https-v10), OpenC2-over-CoAP, ...) |
-| Secure Transport | HTTPS, CoAP, MQTT, OpenDXL, ... |
-
-* The **Secure Transport** layer provides a communication path between the Producer and the Consumer. OpenC2 can be layered over any standard transport protocol.
-* The **Message** layer provides a transfer- and content-independent mechanism for conveying Messages. A transfer specification maps transfer-specific protocol elements to a transfer-independent set of message elements consisting of content and associated metadata.
-* The **Common Content** layer defines the structure of Commands and Responses and a set of common language elements used to construct them.
-* The **Function-specific Content** layer defines the language elements used to support a particular cyber defense function. An Actuator profile defines the implementation conformance requirements for that function. Producers and Consumers will support one or more profiles.
-
-The components of a Command are an Action (what is to be done), a Target (what is being acted upon), an optional Actuator (what is performing the command), and Command Arguments, which influence how the Command is to be performed. An Action coupled with a Target is sufficient to describe a complete Command. Though optional, the inclusion of an Actuator and/or Command Arguments provides additional precision to a Command.
-
-The components of a Response are a numerical status code, an optional status text string, and optional results. The format of the results, if included, depend on the type of Response being transferred.
-
-## 1.6 Goal
-The goal of the OpenC2 Language Specification is to provide a language for interoperating between functional elements of cyber defense systems. This language used in conjunction with OpenC2 Actuator Profiles and OpenC2 Transfer Specifications allows for vendor-agnostic cybertime response to attacks.
-
-The Integrated Adaptive Cyber Defense (IACD) framework defines a collection of activities, based on the traditional OODA (Observe–Orient–Decide–Act) Loop [[IACD]](#iacd):
-
-* Sensing:  gathering of data regarding system activities
-* Sense Making:  evaluating data using analytics to understand what's happening
-* Decision Making:  determining a course-of-action to respond to system events
-* Acting:  Executing the course-of-action
-
-The goal of OpenC2 is to enable coordinated defense in cyber-relevant time between decoupled blocks that perform cyber defense functions. OpenC2 focuses on the Acting portion of the IACD framework; the assumption that underlies the design of OpenC2 is that the sensing/analytics have been provisioned and the decision to act has been made. This goal and these assumptions guide the design of OpenC2:
-
-* **Technology Agnostic:**  The OpenC2 language defines a set of abstract atomic cyber defense actions in a platform and implementation agnostic manner
-* **Concise:**  A Command is intended to convey only the essential information required to describe the action required and can be represented in a very compact form for communications-constrained environments
-* **Abstract:**  Commands and Responses are defined abstractly and can be encoded and transferred via multiple schemes as dictated by the needs of different implementation environments
-* **Extensible:**  While OpenC2 defines a core set of Actions and Targets for cyber defense, the language is expected to evolve with cyber defense technologies, and permits extensions to accommodate new cyber defense technologies.
-
-## 1.7 Purpose and Scope
-
-An 'Endpoint Detection and Response' (EDR) system is a security mechanism which identifies malicious behaviors by recording system activities and comparing them to sets of signatures or heuristics. EDR systems facilitate in digital forensics and incident response by storing and indexing said events, and provide functionality to respond to security incidents as they pertain to actively exploited, infected or vulnerable endpoints.
-
-This Actuator profile specifies the set of Actions, Targets, Specifiers, and Command Arguments that integrates the response functionalities of EDR systems with the Open Command and Control (OpenC2) Command set. Through this Command set, cyber security orchestrators may gain visibility into and provide control over the ER functionality in a manner that is independent of the instance of the EDR solution.
-
-All components, devices and systems that provide ER functionality will implement the OpenC2 Actions, Targets, Specifiers and Arguments identified as required in this document. Actions that are applicable, but not necessarily required, for ER will be identified as optional.
-
-The purpose of this document is to:
-
-* Identify the required and optional OpenC2 Actions for Actuators with ER functionality
-* Identify the required and optional Target types for each Action in the ER class of Actuators
-* Identify Actuator-Specifiers and Arguments for each Action/Target pair that are applicable and/or unique to the ER class of Actuators
-* Annotate each Action/Target pair with a justification and example, and provide sample OpenC2 Commands to a ER with corresponding Responses
-
-This ER profile:
-
-* Does not define or implement Actions beyond those defined in Version 1.0 of the [[OpenC2-Lang-v1.0]](#openc2-lang-v10)
-* Is consistent with Version 1.0 of the OpenC2 Language Specification
-
-Cyber defense systems that are utilizing OpenC2 may require the following components to implement the ER profile:
-
-* OpenC2 Producers: Devices that send Commands, receive Responses, and manage the execution of Commands involving one or more ER or other Actuators with ER capability. The OpenC2 Producer needs _a prior_ knowledge of which Commands the Actuator can process and execute, therefore must understand the profiles for any device that it intends to command
-* OpenC2 Consumers: Devices or instances that provide endpoint detection and response functions. Typically these are Actuators that execute the cyber defense function, but could be orchestrators (i.e., a device or instance that forwards Commands to the Actuator)
 
 -------
 
@@ -361,7 +365,7 @@ Table 2.1.1-1 presents the OpenC2 Actions defined in Version 1.0 of the Language
 |----|-------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | **scan**    | Initiate a scan for binaries classified as malicious.                                                                                     |
 | 3  | **query**   | Query the ER actuator for a list of available features.                                                                                   |
-| 6  | **deny**    | Deny a process or service from being executed on the endpoint.                                                                            |
+| 6  | **deny**    | Deny a process or service from being executed on the Endpoint.                                                                            |
 | 7  | **contain** | Isolate a device from communicating with other devices on a network, quarantine a file.                                                   |
 | 8  | **allow**   | Un-isolate a previously isolated device.                                                                                                  |
 | 9  | **start**   | Initiate a process, application, system, or activity.                                                                                     |
@@ -383,15 +387,16 @@ Table 2.1.2-1 lists the Targets defined in the OpenC2 Language Specification tha
 
 **Type: Target (Choice)**
 
-| ID   | Name         | Type         | \# | Description                                                                                                                                                                                  |
-|------|--------------|--------------|----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 3    | **device**   | ls:Device    | 1  | The properties of a device.                                                                                                                                                                  |
-| 9    | **features** | ls:Features  | 1  | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
-| 10   | **file**     | ls:File      | 1  | The properties of a file.                                                                                                                                                                    |
-| 13   | **ipv4_net** | ls:IPv4-Net  | 1  | An IPv4 address range including CIDR prefix length.                                                                                                                                          |
-| 14   | **ipv6_net** | ls:IPv6-Net  | 1  | An IPv6 address range including prefix length.                                                                                                                                               |
-| 18   | **process**  | ls:Process   | 1  | Common properties of an instance of a computer program as executed on an operating system.                                                                                                   |
-| 1027 | **er/**      | er:AP-Target | 1  | Targets defined in the Endpoint Response actuator profile                                                                                                                                    |
+| ID   | Name            | Type           | \# | Description                                                                                                                                                                                  |
+|------|-----------------|----------------|----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 3    | **device**      | ls:Device      | 1  | The properties of a device.                                                                                                                                                                  |
+| 7    | **domain_name** | ls:Domain-Name | 1  | A network domain name.                                                                                                                                                                 |
+| 9    | **features**    | ls:Features    | 1  | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
+| 10   | **file**        | ls:File        | 1  | The properties of a file.                                                                                                                                                                    |
+| 13   | **ipv4_net**    | ls:IPv4-Net    | 1  | An IPv4 address range including CIDR prefix length.                                                                                                                                          |
+| 14   | **ipv6_net**    | ls:IPv6-Net    | 1  | An IPv6 address range including prefix length.                                                                                                                                               |
+| 18   | **process**     | ls:Process     | 1  | Common properties of an instance of a computer program as executed on an operating system.                                                                                                   |
+| 1027 | **er/**         | er:AP-Target   | 1  | Targets defined in the Endpoint Response actuator profile                                                                                                                                    |
 
 #### 2.1.2.2 ER Targets
 The list of common Targets is extended to include the additional Targets defined in this section and referenced with the `er` namespace.
@@ -404,7 +409,7 @@ The list of common Targets is extended to include the additional Targets defined
 | ID | Name               | Type           | \# | Description                                                                                                                     |
 |----|--------------------|----------------|----|---------------------------------------------------------------------------------------------------------------------------------|
 | 1  | **registry_entry** | Registry-Entry | 1  | A registry entry applicable to Windows Operating Systems.                                                                       |
-| 2  | **account**        | Account        | 1  | A user account on an endpoint.                                                                                                  |
+| 2  | **account**        | Account        | 1  | A user account on an Endpoint.                                                                                                  |
 | 3  | **service**        | Service        | 1  | A program which is managed and executed by a service host process, where several services may be sharing the same service host. |
 
 ### 2.1.3 Type Definitions
@@ -463,7 +468,7 @@ Arguments provide additional precision to a Command by including information suc
 | ID | Name                    | Type                | \#   | Description                                                                                                                                                                                                                                                                              |
 |----|-------------------------|---------------------|------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | **account_status**      | Account-Status      | 0..1 | Specifies whether an account shall be enabled or disabled.                                                                                                                                                                                                                               |
-| 2  | **device_containment**  | Device-Containment  | 0..1 | Specifies which type of isolation an endpoint shall be subjected to (e.g., port isolation, application restriction).                                                                                                                                                                     |
+| 2  | **device_containment**  | Device-Containment  | 0..1 | Specifies which type of isolation an Endpoint shall be subjected to (e.g., port isolation, application restriction).                                                                                                                                                                     |
 | 3  | **permitted_addresses** | Permitted-Addresses | 0..1 | Specifies which IP or domain name addresses shall remain accessible when a device is contained with the 'device_containment' Argument set to 'network_isolation'.                                                                                                                        |
 | 4  | **scan_depth**          | Scan-Depth          | 0..1 | Specifies which type of scan to perform on a device.                                                                                                                                                                                                                                     |
 | 5  | **periodic_scan**       | Periodic-Scan       | 0..1 | Specifies whether periodic scans shall be enabled or disabled.                                                                                                                                                                                                                           |
@@ -473,16 +478,16 @@ Arguments provide additional precision to a Command by including information suc
 
 | ID | Item         | Description                                                    |
 |----|--------------|----------------------------------------------------------------|
-| 1  | **enabled**  | Enable the account and render it available on the endpoint.    |
-| 2  | **disabled** | Disable the account and render it unavailable on the endpoint. |
+| 1  | **enabled**  | Enable the account and render it available on the Endpoint.    |
+| 2  | **disabled** | Disable the account and render it unavailable on the Endpoint. |
 
 **Type: Device-Containment (Enumerated)**
 
 | ID | Item                  | Description                                                                                                                                                                                                                                                                  |
 |----|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1  | **network_isolation** | Isolate the endpoint from communicating with other networked entities, typically through relegation to a private VLAN segment and/or port isolation. MAY be combined with the 'permitted_addresses' Argument to allow communication with select IP or domain name addresses. |
+| 1  | **network_isolation** | Isolate the Endpoint from communicating with other networked entities, typically through relegation to a private VLAN segment and/or port isolation. MAY be combined with the 'permitted_addresses' Argument to allow communication with select IP or domain name addresses. |
 | 2  | **app_restriction**   | Restrict the execution of applications to only those that are signed by a trusted party (e.g., Microsoft only).                                                                                                                                                              |
-| 3  | **disable_nic**       | Disable the Network Interface Controller(s) on the endpoint.                                                                                                                                                                                                                 |
+| 3  | **disable_nic**       | Disable the Network Interface Controller(s) on the Endpoint.                                                                                                                                                                                                                 |
 
 **Type: Permitted-Addresses (Map{1..\*})**
 
@@ -529,14 +534,6 @@ An Actuator is the entity that provides the functionality and performs the Actio
 
 The Actuator Specifiers defined in this document are referenced under the `er` namespace.
 
-**Table 2.1.5-1. ER Specifiers**
-
-**Type: AP-Specifiers (Map)**
-
-| ID | Name         | Type        | \#   | Description                                                                                                                                         |
-|----|--------------|-------------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1  | **hostname** | ls:Hostname | 0..1 | Internet host name for a particular device with ER functionality. MUST be formatted as an internet host name as specified in [[RFC1123]](#rfc1123). |
-
 ## 2.2 OpenC2 Response Components
 Response messages originate from the Actuator as a result of a Command.
 
@@ -576,18 +573,18 @@ Table 2.3-2 defines the Commands that are valid in the context of the ER profile
 
 **Table 2.3-1. Command Matrix**
 
-|                    |query|deny |contain|allow|start|stop |restart|set  |update|create|delete|
-|:---                |:---:|:---:|:---:  |:---:|:---:|:---:| :---: |:---:|:---: |:---: |:---: |
-| **domain_name**		 |     |valid|       |valid|     |     |       |     |      |      |      |
-| **device** 		     |     |     | valid |valid|     |valid| valid |     |      |      |      |
-| **features** 	  	 |valid|     |       |     |     |     |       |     |      |      |      |
-| **file** 			     |     |valid| valid |valid|valid|     |       |     |valid |      |valid |
-| **ipv4_net**		   |     |valid|       |valid|     |     |       |valid|      |      |      |
-| **ipv6_net**		   |     |valid|       |valid|     |     |       |valid|      |      |      |
-| **process** 		   |     |     |       |     |     |valid| valid |     |      |      |      |
-| **registry_entry** |     |     |       |     |     |     |       |valid|      |valid |valid |
-| **account** 		   |     |     |       |     |     |     |       |valid|      |      |      |
-| **service** 		   |     |     |       |     |     |valid|       |     |      |      |valid |
+|                    |scan |query|deny |contain|allow|start|stop |restart|set  |update|create|delete|
+|:---                |:---:|:---:|:---:|:---:  |:---:|:---:|:---:| :---: |:---:|:---: |:---: |:---: |
+| **domain_name**		 |     |     |valid|       |valid|     |     |       |     |      |      |      |
+| **device** 		     |valid|     |     | valid |valid|     |valid| valid |     |      |      |      |
+| **features** 	  	 |     |valid|     |       |     |     |     |       |     |      |      |      |
+| **file** 			     |     |     |valid| valid |valid|valid|     |       |     |valid |      |valid |
+| **ipv4_net**		   |     |     |valid|       |valid|     |     |       |valid|      |      |      |
+| **ipv6_net**		   |     |     |valid|       |valid|     |     |       |valid|      |      |      |
+| **process** 		   |     |     |     |       |     |     |valid|       |     |      |      |      |
+| **registry_entry** |     |     |     |       |     |     |     |       |valid|      |valid |valid |
+| **account** 		   |     |     |     |       |     |     |     |       |valid|      |      |      |
+| **service** 		   |     |     |     |       |     |     |valid|       |     |      |      |valid |
 
 Table 2.3-2 defines the Command Arguments that are allowed for a particular Command by the ER profile. A Command (the top row in Table 2.3-2) paired with an Argument (the first column in Table 2.3-2) defines an allowable combination. The subsection identified at the intersection of the Command/Argument provides details applicable to each Command as influenced by the Argument.
 
@@ -595,17 +592,18 @@ A Command where the Target portion of the Action/Target pair is not specified (w
 
 **Table 2.3-2. Command Arguments Matrix**
 
-|                         |**scan device**             |**deny _target_** |**contain device**             |**contain _target_**         |**allow _target_** |**start _target_** |**stop _target_** |**restart _target_** |**set er:account**            |**set _target_** |**update _target_**         |**create _target_**   |**delete _target_**   |
-|:---                     |:---:                       |:---:             |:---:                          |:---:                        |:---:              |:---:              |:---:             |:---:                |:---:                         |:---:            |:---:                       |:---:                 |:---:                 |
-| **response_requested**  |[2.3.X.1](#2331-scan-device)|[2.3.2](#232-deny)|[2.3.3.1](#2331-contain-device)|[2.3.3](#233-contain)        |[2.3.4](#234-allow)|[2.3.5](#235-start)|[2.3.6](#236-stop)|[2.3.7](#237-restart)|[2.3.8.4](#2384-set-eraccount)|[2.3.8](#238-set)|[2.3.9](#239-update)        |[2.3.10](#2310-create)|[2.3.11](#2311-delete)|
-| **device_containment**  |                            |                  |[2.3.3.1](#2331-contain-device)|                             |                   |                   |                  |                     |                              |                 |                            |                      |                      |
-| **account_status**      |                            |                  |                               |                             |                   |                   |                  |                     |[2.3.8.4](#2384-set-eraccount)|                 |                            |                      |                      |
-| **permitted_addresses** |                            |                  |[2.3.3.1](#2331-contain-device)|                             |                   |                   |                  |                     |                              |                 |                            |                      |                      |
-| **scan_depth**          |[2.3.X.1](#2331-scan-device)|                  |                               |                             |                   |                   |                  |                     |                              |                 |                            |                      |                      |
-| **periodic_scan**        |[2.3.X.1](#2331-scan-device)|                  |                               |                             |                   |                   |                  |                     |                              |                 |                            |                      |                      |
+|                         |**scan device**             |**deny _target_** |**contain device**             |**contain _target_** |**allow _target_** |**start _target_** |**stop _target_** |**restart _target_** |**set er:account**            |**set _target_** |**update _target_**  |**create _target_**   |**delete _target_**   |
+|:---                     |:---:                       |:---:             |:---:                          |:---:                |:---:              |:---:              |:---:             |:---:                |:---:                         |:---:            |:---:                |:---:                 |:---:                 |
+| **response_requested**  |[2.3.1.1](#2311-scan-device)|[2.3.3](#233-deny)|[2.3.4.1](#2341-contain-device)|[2.3.4](#234-contain)|[2.3.5](#235-allow)|[2.3.6](#236-start)|[2.3.7](#237-stop)|[2.3.8](#238-restart)|[2.3.9.4](#2394-set-eraccount)|[2.3.9](#238-set)|[2.3.10](#239-update)|[2.3.11](#2310-create)|[2.3.12](#2311-delete)|
+| **device_containment**  |                            |                  |[2.3.4.1](#2341-contain-device)|                     |                   |                   |                  |                     |                              |                 |                     |                      |                      |
+| **account_status**      |                            |                  |                               |                     |                   |                   |                  |                     |[2.3.9.4](#2394-set-eraccount)|                 |                     |                      |                      |
+| **permitted_addresses** |                            |                  |[2.3.4.1](#2341-contain-device)|                     |                   |                   |                  |                     |                              |                 |                     |                      |                      |
+| **scan_depth**          |[2.3.1.1](#2311-scan-device)|                  |                               |                     |                   |                   |                  |                     |                              |                 |                     |                      |                      |
+| **periodic_scan**       |[2.3.1.1](#2311-scan-device)|                  |                               |                     |                   |                   |                  |                     |                              |                 |                     |                      |                      |
+| **downstream_device**   |[2.3.1.1](#2311-scan-device)|[2.3.3](#233-deny)|[2.3.4.1](#2341-contain-device)|[2.3.4](#234-contain)|[2.3.5](#235-allow)|[2.3.6](#236-start)|[2.3.7](#237-stop)|[2.3.8](#238-restart)|[2.3.9.4](#2394-set-eraccount)|[2.3.9](#238-set)|[2.3.10](#239-update)|[2.3.11](#2310-create)|[2.3.12](#2311-delete)|
 
-<!--2.3.X instead of 2.3.1 is temporary and to avoid shifting the whole list until all Commands are present in the AP-->
-### 2.3.X Scan
+
+### 2.3.1 Scan
 
 OpenC2 Consumers that receive a 'scan' Command:
 
@@ -619,7 +617,7 @@ OpenC2 Consumers that receive a 'scan' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.X.1 Scan device
+#### 2.3.1.1 Scan device
 Scan a device for binaries classified as malicious.
 
 
@@ -641,13 +639,13 @@ OpenC2 Consumers that receive 'scan device' Commands:
     * SHOULD respond with "Argument not supported" in the status Text
     * MAY respond with status code 500
 
-### 2.3.1 Query
+### 2.3.2 Query
 The valid Target type, associated Specifiers, and Options are summarized in [Section 2.3.3.1](#2331-query-features).
 
-#### 2.3.1.1 Query features
+#### 2.3.2.1 Query features
 The 'query features' Command MUST be implemented in accordance with Version 1.0 of the [[OpenC2-Lang-v1.0]](#openc2-lang-v10).
 
-### 2.3.2 Deny
+### 2.3.3 Deny
 
 OpenC2 Consumers that receive a 'deny' Command:
 
@@ -661,8 +659,8 @@ OpenC2 Consumers that receive a 'deny' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.2.X Deny domain_name
-Prevents an endpoint from connecting to a Domain Name address.
+#### 2.3.2.1 Deny domain_name
+Prevents an Endpoint from connecting to a Domain Name address.
 
 OpenC2 Consumers that receive a 'deny domain_name' Command:
 
@@ -672,7 +670,7 @@ OpenC2 Consumers that receive a 'deny domain_name' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-#### 2.3.2.1 Deny file
+#### 2.3.2.2 Deny file
 Prevents the execution of a file.
 
 OpenC2 Consumers that receive a 'deny file' Command:
@@ -681,8 +679,8 @@ OpenC2 Consumers that receive a 'deny file' Command:
     * MUST respond with status code 500
     * SHOULD respond with "Cannot access file" in the status text
 
-#### 2.3.2.2 Deny ipv4_net
-Prevents an endpoint from connecting to an IPv4 address.
+#### 2.3.2.3 Deny ipv4_net
+Prevents an Endpoint from connecting to an IPv4 address.
 
 OpenC2 Consumers that receive a 'deny ipv4_net' Command:
 
@@ -692,8 +690,8 @@ OpenC2 Consumers that receive a 'deny ipv4_net' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-#### 2.3.2.3 Deny ipv6_net
-Prevents an endpoint from connecting to an IPv6 address.
+#### 2.3.2.4 Deny ipv6_net
+Prevents an Endpoint from connecting to an IPv6 address.
 
 OpenC2 Consumers that receive a 'deny ipv6_net' Command:
 
@@ -703,7 +701,7 @@ OpenC2 Consumers that receive a 'deny ipv6_net' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-### 2.3.3 Contain
+### 2.3.4 Contain
 OpenC2 Consumers that receive a 'contain' Command:
 
 * but cannot parse or process the Command
@@ -716,8 +714,8 @@ OpenC2 Consumers that receive a 'contain' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.3.1 Contain device
-Limits the functionalities of an endpoint in relation to application execution and/or network communications. The Producer and Consumer of the command MUST support the er:device_containment Command Argument as defined in [Section 2.1.4](#214-command-arguments)
+#### 2.3.4.1 Contain device
+Limits the functionalities of an Endpoint in relation to application execution and/or network communications. The Producer and Consumer of the command MUST support the er:device_containment Command Argument as defined in [Section 2.1.4](#214-command-arguments)
 
 OpenC2 Producers that send 'contain device' Commands:
 
@@ -735,8 +733,8 @@ OpenC2 Consumers that receive a 'contain device' Command:
     * MUST respond with status code 500
     * SHOULD respond with "Cannot access device" in the status text
 
-#### 2.3.3.2 Contain file
-Puts a file into quarantine, rendering it inaccessible to the user of the machine and unable to execute on the endpoint.
+#### 2.3.4.2 Contain file
+Puts a file into quarantine, rendering it inaccessible to the user of the machine and unable to execute on the Endpoint.
 
 OpenC2 Producers that send 'contain file' Commands:
 
@@ -753,8 +751,8 @@ OpenC2 Consumers that receive a 'contain file' Command:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-### 2.3.4 Allow
-'Allow' can be treated as the mathematical complement to 'deny' Actions as well as 'contain' Actions. Table 2.3-2 summarizes the Command Arguments that apply to all of the Commands consisting of the 'deny' and 'contain' Actions and their valid Target types.
+### 2.3.5 Allow
+'Allow' can be treated as the mathematical complement to all 'deny' Actions as well as all 'contain' Actions defined in this document. Sections [2.3.3](#233-deny) and [2.3.4](#234-contain) lists all Commands constructed using 'deny' and 'contain', respectively.
 
 OpenC2 Consumers that receive a 'allow' Command:
 
@@ -768,8 +766,8 @@ OpenC2 Consumers that receive a 'allow' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.4.X Allow domain_name
-Allows an endpoint to connect to a Domain Name address.
+#### 2.3.5.1 Allow domain_name
+Allows an Endpoint to connect to a Domain Name address. Can be treated as the mathematical complement to the 'deny domain_name' Command.
 
 OpenC2 Consumers that receive a 'allow domain_name' Command:
 
@@ -779,26 +777,35 @@ OpenC2 Consumers that receive a 'allow domain_name' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-#### 2.3.4.1 Allow device
+#### 2.3.5.2 Allow device
 Removes a device from containment.
 
-OpenC2 Consumers that receive a 'allow device' Command:
+OpenC2 Consumers that receive a 'allow device' Command. Can be treated as the mathematical complement to the 'contain device' Command.
 * but cannot access the device specified in the device Target
     * MUST respond with status code 500
     * SHOULD respond with "Cannot access device" in the status text
 
 
-#### 2.3.4.2 Allow file
-Removes execution prevention from a file or takes a file out of quarantine.
+#### 2.3.5.3 Allow file
+Either allows a file matching a certain hash to be written to an Endpoint, or takes a file out of quarantine, depending on which field of the file Target is populated.
+
+OpenC2 Producers that send 'contain file' Commands:
+* MUST only populate a single property of the file Target.
 
 OpenC2 Consumers that receive a 'allow file' Command:
 
-* but cannot access the file specified in the file Target
-    * MUST respond with status code 500
-    * SHOULD respond with "Cannot access file" in the status text
+* and the 'path' property of the file Target is populated
+    * SHOULD treat the Command as the mathematical complement to the 'contain file' Command.
+* and the 'hashes' property of the file Target is populated
+    * SHOULD treat the Command as the mathematical complement to the 'deny file' Command.
+* and the 'name' property of the file Target is populated
+    * SHOULD treat the Command as the mathematical complement to the 'deny file' Command.
+* but more than one property is populated at a time
+    * MUST respond with status code 400
+    * SHOULD respond with "path and hashes cannot be populated at the same time" in the status text
 
-#### 2.3.4.3 Allow ipv4_net
-Allows an endpoint to connect to an IPv4 address.
+#### 2.3.5.4 Allow ipv4_net
+Allows an Endpoint to connect to an IPv4 address. Can be treated as the mathematical complement to the 'deny ipv4_net' Command.
 
 OpenC2 Consumers that receive a 'allow ipv4_net' Command:
 
@@ -808,8 +815,8 @@ OpenC2 Consumers that receive a 'allow ipv4_net' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-#### 2.3.4.4 Allow ipv6_net
-Allows an endpoint to connect to an IPv6 address.
+#### 2.3.5.5 Allow ipv6_net
+Allows an Endpoint to connect to an IPv6 address. Can be treated as the mathematical complement to the 'deny ipv6_net' Command.
 
 OpenC2 Consumers that receive a 'allow ipv6_net' Command:
 
@@ -819,7 +826,7 @@ OpenC2 Consumers that receive a 'allow ipv6_net' Command:
     * SHOULD respond with 'Target type not supported' in the status text
     * MAY respond with the 500 status code
 
-### 2.3.5 Start
+### 2.3.6 Start
 OpenC2 Consumers that receive a 'start' Command:
 
 * but cannot parse or process the Command
@@ -832,7 +839,7 @@ OpenC2 Consumers that receive a 'start' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.5.1 Start file
+#### 2.3.6.1 Start file
 Instructs the Actuator to execute a file.
 
 OpenC2 Producers that send 'start file' Commands:
@@ -849,7 +856,7 @@ OpenC2 Consumers that receive a 'start file' Commands:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-### 2.3.6 Stop
+### 2.3.7 Stop
 OpenC2 Consumers that receive a 'stop' Command:
 
 * but cannot parse or process the Command
@@ -862,8 +869,8 @@ OpenC2 Consumers that receive a 'stop' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.6.1 Stop device
-Shuts down an endpoint.
+#### 2.3.7.1 Stop device
+Shuts down an Endpoint.
 
 OpenC2 Consumers that receive a 'stop device' Command:
 
@@ -871,7 +878,7 @@ OpenC2 Consumers that receive a 'stop device' Command:
     * MUST respond with status code 500
     * SHOULD respond with "Cannot access device" in the status text
 
-#### 2.3.6.2 Stop process
+#### 2.3.7.2 Stop process
 Stops an active process. A 'process' Target MUST contain at least one property.
 
 OpenC2 Producers that send 'stop process' commands
@@ -893,7 +900,7 @@ OpenC2 Consumers that receive 'stop process' commands
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-#### 2.3.6.3 Stop er:service
+#### 2.3.7.3 Stop er:service
 Stops a running service and removes it from its service host process.
 
 OpenC2 Producers that send 'stop er:service' commands
@@ -916,7 +923,7 @@ OpenC2 Consumers that receive 'stop er:service' commands
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-### 2.3.7 Restart
+### 2.3.8 Restart
 OpenC2 Consumers that receive a 'restart' Command:
 
 * but cannot parse or process the Command
@@ -929,8 +936,8 @@ OpenC2 Consumers that receive a 'restart' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.7.1 Restart device
-Restarts an endpoint.
+#### 2.3.8.1 Restart device
+Restarts an Endpoint.
 
 OpenC2 Consumers that receive a 'restart device' Command:
 
@@ -938,7 +945,7 @@ OpenC2 Consumers that receive a 'restart device' Command:
     * MUST respond with status code 500
     * SHOULD respond with "Cannot access device" in the status text
 
-### 2.3.8 Set
+### 2.3.9 Set
 OpenC2 Consumers that receive a 'set' Command:
 
 * but cannot parse or process the Command
@@ -951,8 +958,8 @@ OpenC2 Consumers that receive a 'set' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.8.1 Set ipv4_net
-Sets the IPv4 address of the endpoint to the specified Target value.
+#### 2.3.9.1 Set ipv4_net
+Sets the IPv4 address of the Endpoint to the specified Target value.
 
 OpenC2 Producers that send 'set ipv4_net' Commands:
 * MUST include an IPv4 address without the CIDR prefix-length, or have it set to 32
@@ -970,8 +977,8 @@ OpenC2 Consumers that receive 'set ipv4_net' Commands
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-#### 2.3.8.2 Set ipv6_net
-Sets the IPv6 address of the endpoint to the specified Target value.
+#### 2.3.9.2 Set ipv6_net
+Sets the IPv6 address of the Endpoint to the specified Target value.
 
 OpenC2 Producers that send 'set ipv4_net' Commands:
 * MUST include an IPv4 address without the prefix-length, or have it set to 128
@@ -989,7 +996,7 @@ OpenC2 Consumers that receive a 'set ipv4_net' Command:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-#### 2.3.8.3 Set er:registry_entry
+#### 2.3.9.3 Set er:registry_entry
 Sets the 'value' property of a Registry Entry. The 'type' property MUST be populated and MUST conform to the registry entry types as defined in [Winnt.h header](#winnth-registry-types).
 
 OpenC2 Producers that send 'set er:registry_entry' Commands:
@@ -1014,7 +1021,7 @@ OpenC2 Consumers that receive a'set er:registry_entry' Command:
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
 
-#### 2.3.8.4 Set er:account
+#### 2.3.9.4 Set er:account
 Sets the status of the account to be either enabled or disabled. The producer and consumer of the command MUST support the er:account_status Command Argument as defined in [Section 2.1.4](#214-command-arguments)
 
 OpenC2 Producers that send 'set er:account' Commands:
@@ -1036,12 +1043,12 @@ OpenC2 Consumers that receive a 'set er:account' Command:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-### 2.3.9 Update
-#### 2.3.9.1 Update file
+### 2.3.10 Update
+#### 2.3.10.1 Update file
 The 'update file' Command is used to replace or update files such as configuration files, rule sets, etc. Implementation of the update file Command is OPTIONAL. OpenC2 Consumers that choose to implement the 'update file' Command MUST include all steps that are required for the update file procedure such as retrieving the file(s), install the file(s), restart/ reboot the device etc. The end state shall be that the ER actuator operates with the new file at the conclusion of the 'update file' Command. The atomic steps that take place are implementation specific.
 
-### 2.3.10 Create
-#### 2.3.10.1 Create er:registry_entry
+### 2.3.11 Create
+#### 2.3.11.1 Create er:registry_entry
 Creates a registry entry in the specified path. The 'type' property MUST be populated and MUST conform to the registry entry types as defined in [Winnt.h header](#winnth-registry-types).
 
 OpenC2 Producers that send 'create er:registry_entry' Commands:
@@ -1061,7 +1068,7 @@ OpenC2 Consumers that receive a 'create er:registry_entry' Command:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-### 2.3.11 Delete
+### 2.3.12 Delete
 OpenC2 Consumers that receive a 'delete' Command:
 
 * but cannot parse or process the Command
@@ -1074,8 +1081,8 @@ OpenC2 Consumers that receive a 'delete' Command:
     * SHOULD respond with "Command not supported" in the status text
     * MAY respond with status code 500
 
-#### 2.3.11.1 Delete file
-Deletes the specified file from an endpoint.
+#### 2.3.12.1 Delete file
+Deletes the specified file from an Endpoint.
 
 OpenC2 Producers that send 'delete file' Commands:
 
@@ -1091,7 +1098,7 @@ OpenC2 Consumers that receive a 'delete file' Command:
   * MAY respond with status code 500
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
-#### 2.3.11.2 Delete er:registry_entry
+#### 2.3.12.2 Delete er:registry_entry
 Deletes a registry entry. The 'type' property MUST be populated and MUST conform to the registry entry types as defined in [Winnt.h header](#winnth-registry-types).
 
 OpenC2 Producers that send 'create er:registry_entry' Commands:
@@ -1113,8 +1120,8 @@ OpenC2 Consumers that receive a 'create er:registry_entry' Command:
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
 
-#### 2.3.11.3 Delete er:service
-Deletes a service from the endpoint.
+#### 2.3.12.3 Delete er:service
+Deletes a service from the Endpoint.
 
 OpenC2 Producers that send 'delete er:service' commands
 * MUST populate at least one property of the Command Target
@@ -1137,9 +1144,9 @@ OpenC2 Consumers that receive 'delete er:service' commands
   * SHOULD respond with "Downstream device argument not populated" in the status text
 
 
-# 3 Conformance statements
+# 3 Conformance
 _This section is normative_
-This section identifies the requirements for twenty-two conformance profiles as they pertain to two conformance targets. The two conformance targets are OpenC2 Producers and OpenC2 Consumers (as defined in [Section 1.8](#18-purpose-and-scope) of this specification).
+This section identifies the requirements for fifty eight conformance profiles as they pertain to two conformance targets. The two conformance targets are OpenC2 Producers and OpenC2 Consumers (as defined in [Section 1.8](#18-purpose-and-scope) of this specification).
 
 ## 3.1 Clauses Pertaining to the OpenC2 Producer Conformance Target
 All OpenC2 Producers that are conformant to this specification MUST satisfy Conformance Clause 1 and MAY satisfy one or more of Conformance Clauses 2 through 11.
@@ -1153,128 +1160,188 @@ An OpenC2 Producer satisfies Baseline OpenC2 Producer conformance if:
 * 3.1.1.5 **MUST** be conformant with Version 1.0 of the OpenC2 Language Specification
 * 3.1.1.6 **MUST** implement the 'query features' Command in accordance with the normative text provided in Version 1.0 of the OpenC2 Language Specification
 * 3.1.1.7 **MUST** implement the 'response_requested' Command Argument as a valid option for any Command
-* 3.1.1.8 **MAY** implement the 'er:Downstream-Device' Command Argument as a valid option for any Command not included in section [Section 3.1.Z](#31Z-conformance-clause-zdownstream-device-consumers)
-* * 3.1.1.9 **MUST** conform to at least one of the following conformance clauses in this specification:
-   * TBD
-   * TBD
+* 3.1.1.8 **MAY** implement the 'er:downstream_device' Command Argument as a valid option for any Command not included in section [Section 3.1.2](#312-conformance-clause-2downstream-device-consumers)
+* 3.1.1.9 **MUST** conform to at least one of the following conformance clauses in this specification:
+   * Conformance Clause 7
+   * Conformance Clause 9
 
-### 3.1.Z Conformance Clause Z: Downstream Device Consumers<!-- 'Z' is temporary to avoid having to shift the whole list-->
+### 3.1.2 Conformance Clause 2: Downstream Device Producer
 An OpenC2 Producer satisfies 'Device-Containment Producer' conformance if:
-* 3.1.Z.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.Z.2 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'start file' Command in accordance with [Section 2.3.5.1](#2351-start-file) of this specification
-* 3.1.Z.3 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'contain file' Command in accordance with [Section 2.3.3.2](#2332-contain-file) of this specification
-* 3.1.Z.4 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'set ipv4_net' Command in accordance with [Section 2.3.8.1](#2381-set-ipv4-net) of this specification
-* 3.1.Z.5 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'set ipv6_net' Command in accordance with [Section 2.3.8.2](#2382-set-ipv6-net) of this specification
-* 3.1.Z.6 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'stop process' Command in accordance with [Section 2.3.6.2](#2362-stop-process) of this specification
-* 3.1.Z.7 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'set er:registry_entry' Command in accordance with [Section 2.3.8.3](#2383-set-erregistry-entry)) of this specification
-* 3.1.Z.8 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'create er:registry_entry' Command in accordance with [Section 2.3.10.1](#23101-create-erregistry-entry) of this specification
-* 3.1.Z.9 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'delete er:registry_entry' Command in accordance with [Section 2.3.11.2](#23112-delete-erregistry-entry) of this specification
-* 3.1.Z.10 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'set er:account' Command in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
-* 3.1.Z.11 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'stop er:service' Command in accordance with [Section 2.3.6.3](#2363-stop-erservice) of this specification
-* 3.1.Z.12 **MUST** implement the 'er:Downstream-Device' Command Argument as a valid option for the 'delete er:service' Command in accordance with [Section 2.3.11.3](#23113-delete-erservice) of this specification
-
-### 3.1.2 Conformance Clause 2: Contain Device Producer
-An OpenC2 Producer satisfies 'Contain Device Producer' conformance if:
 * 3.1.2.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.2.2 **MUST** implement the 'contain device' Command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
-* 3.1.2.3 **MUST** implement the 'allow device' Command in accordance with [Section 2.3.4.1](#2341-allow-device) of this specification
+* And if the Producer implements the 'start file' command:
+  * 3.1.2.2 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'start file' Command in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
+* And if the Producer implements the 'contain file' command:
+  * 3.1.2.3 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'contain file' Command in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
+* And if the Producer implements the 'set ipv4_net' command:
+  * 3.1.2.4 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set ipv4_net' Command in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
+* And if the Producer implements the 'set ipv6_net' command:
+  * 3.1.2.5 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set ipv6_net' Command in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
+* And if the Producer implements the 'stop process' command:
+  * 3.1.2.6 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'stop process' Command in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
+* And if the Producer implements the 'set er:registry_entry' command:
+  * 3.1.2.7 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set er:registry_entry' Command in accordance with [Section 2.3.9.3](#2393-set-erregistry-entry)) of this specification
+* And if the Producer implements the 'create er:registry_entry' command:
+  * 3.1.2.8 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'create er:registry_entry' Command in accordance with [Section 2.3.11.1](#23111-create-erregistry-entry) of this specification
+* And if the Producer implements the 'delete er:registry_entry' command:
+  * 3.1.2.9 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'delete er:registry_entry' Command in accordance with [Section 2.3.12.2](#23122-delete-erregistry-entry) of this specification
+* And if the Producer implements the 'set er:account' command:
+  * 3.1.2.10 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set er:account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* And if the Producer implements the 'stop er:service' command:
+  * 3.1.2.11 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'stop er:service' Command in accordance with [Section 2.3.7.3](#2373-stop-erservice) of this specification
+* And if the Producer implements the 'delete er:service' command:
+  * 3.1.2.12 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'delete er:service' Command in accordance with [Section 2.3.12.3](#23123-delete-erservice) of this specification
 
-### 3.1.3 Conformance Clause 3: Device Containment Producer
-An OpenC2 Producer satisfies 'Device-Containment Producer' conformance if:
+### 3.1.3 Conformance Clause 3: Domain Name Producer
+An OpenC2 Producer satisfies 'Deny Domain Name Producer' conformance if:
 * 3.1.3.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.3.2 **MUST** implement the 'device-containment' Command Argument as a valid option for the 'contain device' command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
+* 3.1.3.2 **MUST** implement the 'deny domain_name' Command in accordance with [Section 2.3.3.1](#2331-deny-domain-name) of this specification
+* 3.1.3.3 **MUST** implement the 'allow domain_name' Command in accordance with [Section 2.3.5.1](#2351-allow-domain-name) of this specification
 
-### 3.1.X Conformance Clause X: Permitted-Addresses Producer
-An OpenC2 Producer satisfies 'Permitted-Addresses Producer' conformance if:
-* 3.1.X.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.X.2 **MUST** implement the 'Permitted-Addresses' Command Argument as a valid option for the 'contain device' command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
-
-### 3.1.Y Conformance Clause Y: Start File Producer
-An OpenC2 Producer satisfies 'Start File Producer' conformance if:
-* 3.1.Y.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.Y.2 **MUST** implement the 'start file' Command in accordance with [Section 2.3.5.1](#2351-start-file) of this specification
-* 3.1.Y.2 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.5.1](#2351-start-file) of this specification
-
-### 3.1.4 Conformance Clause 4: Stop Device Producer
-An OpenC2 Producer satisfies 'Stop Device Producer' conformance if:
+### 3.1.4 Conformance Clause 4: Scan Device Producer
+An OpenC2 Producer satisfies 'Scan Device Producer' conformance if:
 * 3.1.4.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.4.2 **MUST** implement the 'stop device' Command in accordance with [Section 2.3.6.1](#2361-stop-device) of this specification
+* 3.1.4.2 **MUST** implement the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
 
-### 3.1.5 Conformance Clause 5: Restart Device Producer
-An OpenC2 Producer satisfies 'Restart Device Producer' conformance if:
+### 3.1.5 Conformance Clause 5: Scan Depth Producer
+An OpenC2 Producer satisfies 'Scan Depth Producer' conformance if:
 * 3.1.5.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.5.2 **MUST** implement the 'restart device' Command in accordance with [Section 2.3.7.1](#2371-restart-device) of this specification
+* 3.1.5.2 **MUST** implement the 'er:scan_depth' Command Argument as a valid option for the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
 
-### 3.1.6 Conformance Clause 6: Deny File Producer
-An OpenC2 Producer satisfies 'Deny File Producer' conformance if:
+### 3.1.6 Conformance Clause 6: Periodic Scan Producer
+An OpenC2 Producer satisfies 'Periodic Scan Producer' conformance if:
 * 3.1.6.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.6.2 **MUST** implement the 'deny file' Command in accordance with [Section 2.3.2.1](#2321-deny-file) of this specification
-* 3.1.6.3 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.4.2](#2342-allow-file) of this specification
+* 3.1.6.2 **MUST** implement the 'er:periodic_scan' Command Argument as a valid option for the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
 
-### 3.1.7 Conformance Clause 7: Contain File Producer
-An OpenC2 Producer satisfies 'Contain File Producer' conformance if:
-* 3.1.2.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.6.2 **MUST** implement the 'contain file' Command in accordance with [Section 2.3.3.2](#2332-contain-file) of this specification
-* 3.1.6.3 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.4.2](#2342-allow-file) of this specification
-* 3.1.6.4 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.3.2](#2332-contain-file) of this specification
+### 3.1.7 Conformance Clause 7: Contain Device Producer
+An OpenC2 Producer satisfies 'Contain Device Producer' conformance if:
+* 3.1.7.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.7.2 **MUST** implement the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+* 3.1.7.3 **MUST** implement the 'er:device_containment' Command Argument in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+* 3.1.7.4 **MUST** implement the 'er:device_containment' Command Argument as a valid option for the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
 
-### 3.1.8 Conformance Clause 8: Allow/Deny IPv4 Net Producer
-An OpenC2 Producer satisfies 'Allow/Deny IPv4 Net Producer' conformance if:
-* TBA
+### 3.1.8 Conformance Clause 8: Permitted Addresses Producer
+An OpenC2 Producer satisfies 'Permitted Addresses Producer' conformance if:
+* 3.1.8.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.8.2 **MUST** implement the 'er:permitted_addresses' Command Argument as a valid option for the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
 
-### 3.1.9 Conformance Clause 9: Allow/Deny IPv6 Net Producer
-An OpenC2 Producer satisfies 'Allow/Deny IPv6 Net Producer' conformance if:
-* TBA
+### 3.1.9 Conformance Clause 9: Allow Device Producer
+An OpenC2 Producer satisfies 'Contain Device Producer' conformance if:
+* 3.1.9.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.9.2 **MUST** implement the 'allow device' Command in accordance with [Section 2.3.5.1](#2351-allow-device) of this specification
 
-### 3.1.10 Conformance Clause 10: Set IPv4 Net Producer
-An OpenC2 Producer satisfies 'Set IPv4 Net Producer' conformance if:
+### 3.1.10 Conformance Clause 10: Stop Device Producer
+An OpenC2 Producer satisfies 'Stop Device Producer' conformance if:
 * 3.1.10.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.10.2 **MUST** implement the 'set ipv4_net' Command in accordance with [Section 2.3.8.1](#2381-set-ipv4-net) of this specification
-* 3.1.10.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.1](#2381-set-ipv4-net) of this specification
+* 3.1.10.2 **MUST** implement the 'stop device' Command in accordance with [Section 2.3.7.1](#2371-stop-device) of this specification
 
-### 3.1.11 Conformance Clause 11: Set IPv6 Net Producer
-An OpenC2 Producer satisfies 'Set IPv6 Net Producer' conformance if:
+### 3.1.11 Conformance Clause 11: Restart Device Producer
+An OpenC2 Producer satisfies 'Restart Device Producer' conformance if:
 * 3.1.11.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.11.2 **MUST** implement the 'set ipv6_net' Command in accordance with [Section 2.3.8.2](#2382-set-ipv6-net) of this specification
-* 3.1.11.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.2](#2382-set-ipv6-net) of this specification
+* 3.1.11.2 **MUST** implement the 'restart device' Command in accordance with [Section 2.3.8.1](#2381-restart-device) of this specification
 
-### 3.1.12 Conformance Clause 12: Stop Process Producer
-An OpenC2 Producer satisfies 'Process Producer' conformance if:
+### 3.1.12 Conformance Clause 12: Deny File Producer
+An OpenC2 Producer satisfies 'Deny File Producer' conformance if:
 * 3.1.12.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.12.2 **MUST** implement the 'stop process' Command in accordance with [Section 2.3.6.2](#2362-stop-process) of this specification
-* 3.1.12.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.6.2](#2362-stop-process) of this specification
+* 3.1.12.2 **MUST** implement the 'deny file' Command in accordance with [Section 2.3.3.2](#2332-deny-file) of this specification
 
-### 3.1.13 Conformance Clause 13: Registry Entry Producer
-An OpenC2 Producer satisfies 'Registry Entry Producer' conformance if:
+### 3.1.13 Conformance Clause 13: Contain File Producer
+An OpenC2 Producer satisfies 'Contain File Producer' conformance if:
 * 3.1.13.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.13.2 **MUST** implement the 'set registry_entry' Command in accordance with [Section 2.3.8.3](#2383-set-erregistry-entry) of this specification
-* 3.1.13.3 **MUST** implement the 'create registry_entry' Command in accordance with [Section 2.3.10.1](#23101-create-erregistry-entry) of this specification
-* 3.1.13.4 **MUST** implement the 'delete registry_entry' Command in accordance with [Section 2.3.11.2](#23112-delete-erregistry-entry) of this specification
-* 3.1.13.5 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with the above sections <!-- Temporary description. I will split this conformance clause after the PR has been merged -->
+* 3.1.13.2 **MUST** implement the 'contain file' Command in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
+* 3.1.13.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
 
-### 3.1.14 Conformance Clause 14: Account Producer
-An OpenC2 Producer satisfies 'Account Producer' conformance if:
+### 3.1.14 Conformance Clause 14: Allow File Producer
+An OpenC2 Producer satisfies 'Allow File Producer' conformance if:
 * 3.1.14.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.14.2 **MUST** implement the 'set account' Command in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
-* 3.1.14.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
+* 3.1.14.2 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.5.3](#2353-allow-file) of this specification
+* 3.1.14.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
 
-### 3.1.15 Conformance Clause 15: Account Status Producers
-An OpenC2 Producer satisfies 'Account-Status Producers' conformance if:
+### 3.1.15 Conformance Clause 15: Start File Producer
+An OpenC2 Producer satisfies 'Start File Producer' conformance if:
 * 3.1.15.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.15.2 **MUST** implement the 'account-status' Command Argument as a valid option for the 'set account' command in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
+* 3.1.15.2 **MUST** implement the 'start file' Command in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
+* 3.1.15.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
 
-### 3.1.16 Conformance Clause 16: Service Producer
-An OpenC2 Producer satisfies 'Service Producer' conformance if:
+### 3.1.16 Conformance Clause 16: Deny IPv4 Net Producer
+An OpenC2 Producer satisfies 'Deny IPv4 Net Producer' conformance if:
 * 3.1.16.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.1.16.2 **MUST** implement the 'stop service' Command in accordance with [Section 2.3.6.3](#2363-stop-erservice) of this specification
-* 3.1.16.2 **MUST** implement the 'delete service' Command in accordance with [Section 2.3.11.3](#23113-delete-erservice) of this specification
-* 3.1.16.4 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with the above sections <!-- Temporary description. I will split this conformance clause after the PR has been merged -->
 
+### 3.1.17 Conformance Clause 17: Allow IPv4 Net Producer
+An OpenC2 Producer satisfies 'Allow IPv4 Net Producer' conformance if:
+* 3.1.17.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+
+### 3.1.18 Conformance Clause 18: Set IPv4 Net Producer
+An OpenC2 Producer satisfies 'Set IPv4 Net Producer' conformance if:
+* 3.1.18.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.18.2 **MUST** implement the 'set ipv4_net' Command in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
+* 3.1.18.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
+
+### 3.1.19 Conformance Clause 19: Deny IPv6 Net Producer
+An OpenC2 Producer satisfies 'Deny IPv6 Net Producer' conformance if:
+* **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+
+### 3.1.20 Conformance Clause 20: Allow IPv6 Net Producer
+An OpenC2 Producer satisfies 'Allow IPv6 Net Producer' conformance if:
+* **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+
+### 3.1.21 Conformance Clause 21: Set IPv6 Net Producer
+An OpenC2 Producer satisfies 'Set IPv6 Net Producer' conformance if:
+* 3.1.21.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.21.2 **MUST** implement the 'set ipv6_net' Command in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
+* 3.1.21.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
+
+### 3.1.22 Conformance Clause 22: Stop Process Producer
+An OpenC2 Producer satisfies 'Process Producer' conformance if:
+* 3.1.22.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.22.2 **MUST** implement the 'stop process' Command in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
+* 3.1.22.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
+
+### 3.1.23 Conformance Clause 23: Set Registry Entry Producer
+An OpenC2 Producer satisfies 'Registry Entry Producer' conformance if:
+* 3.1.23.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.23.2 **MUST** implement the 'set registry_entry' Command in accordance with [Section 2.3.9.3](#2393-set-erregistry-entry) of this specification
+* 3.1.23.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
+
+### 3.1.24 Conformance Clause 24: Create Registry Entry Producer
+An OpenC2 Producer satisfies 'Registry Entry Producer' conformance if:
+* 3.1.24.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.24.2 **MUST** implement the 'create er:registry_entry' Command in accordance with [Section 2.3.11.1](#23111-create-erregistry-entry) of this specification
+* 3.1.24.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
+
+### 3.1.25 Conformance Clause 25: Delete Registry Entry Producer
+An OpenC2 Producer satisfies 'Registry Entry Producer' conformance if:
+* 3.1.25.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.25.2 **MUST** implement the 'delete rer:egistry_entry' Command in accordance with [Section 2.3.12.2](#23122-delete-erregistry-entry) of this specification
+* 3.1.25.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
+
+### 3.1.26 Conformance Clause 26: Set Account Producer
+An OpenC2 Producer satisfies 'Account Producer' conformance if:
+* 3.1.26.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.26.2 **MUST** implement the 'set er:account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* 3.1.26.3 **MUST** implement the 'er:account_status' Command Argument in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* 3.1.26.4 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+
+### 3.1.27 Conformance Clause 27: Account Status Producers
+An OpenC2 Producer satisfies 'Account-Status Producers' conformance if:
+* 3.1.27.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.27.2 **MUST** implement the 'er:account_status' Command Argument as a valid option for the 'set account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+
+### 3.1.28 Conformance Clause 28: Stop Service Producer
+An OpenC2 Producer satisfies 'Stop Service Producer' conformance if:
+* 3.1.28.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.28.2 **MUST** implement the 'stop er:service' Command in accordance with [Section 2.3.7.3](#2373-stop-erservice) of this specification
+* 3.1.28.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
+
+### 3.1.29 Conformance Clause 29: Delete Service Producer
+An OpenC2 Producer satisfies 'Delete Service Producer' conformance if:
+* 3.1.29.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.1.29.2 **MUST** implement the 'delete er:service' Command in accordance with [Section 2.3.12.3](#23123-delete-erservice) of this specification
+* 3.1.29.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
 ## 3.2 Clauses Pertaining to the OpenC2 Consumer Conformance Target
 All OpenC2 Consumers that are conformant to this specification MUST satisfy Conformance Clause 12 and MAY satisfy one or more of Conformance Clauses 13 through 22.
 
-### 3.2.1 Conformance Clause 17: Baseline OpenC2 Consumer
+### 3.2.1 Conformance Clause 30: Baseline OpenC2 Consumer
 An OpenC2 Consumer satisfies Baseline OpenC2 Consumer conformance if:
 * 3.2.1.1 **MUST** support JSON serialization of OpenC2 Commands that are syntactically valid in accordance with the property tables presented in [Section 2.1](#21-openc2-command-components)
 * 3.2.1.2 All serializations **MUST** be implemented in a manner such that the serialization validates against and provides a one-to-one mapping to the property tables in [Section 2.1](#21-openc2-command-components) of this specification
@@ -1285,289 +1352,184 @@ An OpenC2 Consumer satisfies Baseline OpenC2 Consumer conformance if:
 * 3.2.1.7 **MUST** implement the 'response_requested' Command Argument as a valid option for any Command
     * 3.2.1.7.1 All Commands received with a 'response_requested' argument set to 'none' **MUST** process the Command and **MUST NOT** send a Response. This criteria supersedes all other normative text as it pertains to Responses
     * 3.2.1.7.2 All Commands received without the 'response_requested' argument **MUST** process the Command and Response in a manner that is consistent with "response_requested":"complete"
+* 3.2.1.8 **MAY** implement the 'er:downstream_device' Command Argument as a valid option for any Command not included in section [Section 3.1.2](#312-conformance-clause-2downstream-device-consumers)
 * 3.2.1.8 **MUST** conform to at least one of the following conformance clauses in this specification:
-    * TBD
-    * TBD
+    * Conformance Clause 36
+    * Conformance Clause 38
 
-### 3.2.2 Conformance Clause 18: Contain Device Consumer
-An OpenC2 Producer satisfies 'Contain Device Consumer' conformance if:
-* 3.2.2.1 **MUST** meet all of conformance criteria identified in Conformance Clause 17 of this specification
-* 3.2.2.2 **MUST** implement the 'contain device' Command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
-* 3.2.2.3 **MUST** implement the 'allow device' Command in accordance with [Section 2.3.4.1](#2341-allow-device) of this specification
-
-### 3.2.3 Conformance Clause 19: Device Containment Consumer
-An OpenC2 Producer satisfies 'Device-Containment Consumer' conformance if:
-* 3.2.3.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.3.2 **MUST** implement the 'device-containment' Command Argument as a valid option for the 'contain device' command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
-
-### 3.2.X Conformance Clause X: Permitted-Addresses Consumer
-An OpenC2 Consumer satisfies 'Permitted-Addresses Consumer' conformance if:
-* 3.2.X.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.X.2 **MUST** implement the 'Permitted-Addresses' Command Argument as a valid option for the 'contain device' command in accordance with [Section 2.3.3.1](#2331-contain-device) of this specification
-
-### 3.2.Y Conformance Clause Y: Start File Producer
-An OpenC2 Producer satisfies 'Start File Consumer' conformance if:
-* 3.2.Y.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.Y.2 **MUST** implement the 'start file' Command in accordance with [Section 2.3.5.1](#2351-start-file) of this specification
-* 3.2.Y.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.5.1](#2351-start-file) of this specification
-
-### 3.2.4 Conformance Clause 20: Stop Device Consumer
-An OpenC2 Producer satisfies 'Stop Device Consumer' conformance if:
-* 3.2.4.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.4.2 **MUST** implement the 'stop device' Command in accordance with [Section 2.3.6.1](#2361-stop-device) of this specification
-
-### 3.2.5 Conformance Clause 21: Restart Device Consumer
-An OpenC2 Producer satisfies 'Restart Device Consumer' conformance if:
-* 3.2.5.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.5.2 **MUST** implement the 'restart device' Command in accordance with [Section 2.3.7.1](#2371-restart-device) of this specification
-
-### 3.2.6 Conformance Clause 22: Deny File Consumer
-An OpenC2 Producer satisfies 'Deny File Consumer' conformance if:
-* 3.2.6.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.6.2 **MUST** implement the 'deny file' Command in accordance with [Section 2.3.2.1](#2321-deny-file) of this specification
-* 3.2.6.3 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.4.2](#2342-allow-file) of this specification
-
-### 3.2.7 Conformance Clause 23: Contain File Consumer
-An OpenC2 Producer satisfies 'Contain File Consumer' conformance if:
+### 3.2.2 Conformance Clause 31: Downstream Device Consumer
+An OpenC2 Consumer satisfies 'Device-Containment Consumer' conformance if:
 * 3.2.2.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.6.2 **MUST** implement the 'contain file' Command in accordance with [Section 2.3.3.2](#2332-contain-file) of this specification
-* 3.2.6.3 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.4.2](#2342-allow-file) of this specification
-* 3.2.6.4 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.3.2](#2332-contain-file) of this specification
+* And if the Consumer implements the 'start file' command:
+  * 3.2.2.2 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'start file' Command in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
+* And if the Consumer implements the 'contain file' command:
+  * 3.2.2.3 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'contain file' Command in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
+* And if the Consumer implements the 'set ipv4_net' command:
+  * 3.2.2.4 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set ipv4_net' Command in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
+* And if the Consumer implements the 'set ipv6_net' command:
+  * 3.2.2.5 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set ipv6_net' Command in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
+* And if the Consumer implements the 'stop process' command:
+  * 3.2.2.6 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'stop process' Command in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
+* And if the Consumer implements the 'set er:registry_entry' command:
+  * 3.2.2.7 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set er:registry_entry' Command in accordance with [Section 2.3.9.3](#2393-set-erregistry-entry)) of this specification
+* And if the Consumer implements the 'create er:registry_entry' command:
+  * 3.2.2.8 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'create er:registry_entry' Command in accordance with [Section 2.3.11.1](#23111-create-erregistry-entry) of this specification
+* And if the Consumer implements the 'delete er:registry_entry' command:
+  * 3.2.2.9 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'delete er:registry_entry' Command in accordance with [Section 2.3.12.2](#23122-delete-erregistry-entry) of this specification
+* And if the Consumer implements the 'set er:account' command:
+  * 3.2.2.10 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'set er:account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* And if the Consumer implements the 'stop er:service' command:
+  * 3.2.2.11 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'stop er:service' Command in accordance with [Section 2.3.7.3](#2373-stop-erservice) of this specification
+* And if the Consumer implements the 'delete er:service' command:
+  * 3.2.2.12 **MUST** implement the 'er:downstream_device' Command Argument as a valid option for the 'delete er:service' Command in accordance with [Section 2.3.12.3](#23123-delete-erservice) of this specification
 
-### 3.2.8 Conformance Clause 24: Allow/Deny IPv4 Net Consumer
-An OpenC2 Producer satisfies 'Allow/Deny IPv4 Net Consumer' conformance if:
-* TBA
+### 3.2.3 Conformance Clause 32: Domain Name Consumer
+An OpenC2 Consumer satisfies 'Deny Domain Name Consumer' conformance if:
+* 3.2.3.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.3.2 **MUST** implement the 'deny domain_name' Command in accordance with [Section 2.3.3.1](#2331-deny-domain-name) of this specification
+* 3.2.3.3 **MUST** implement the 'allow domain_name' Command in accordance with [Section 2.3.5.1](#2351-allow-domain-name) of this specification
 
-### 3.2.9 Conformance Clause 25: Allow/Deny IPv6 Net Consumer
-An OpenC2 Producer satisfies 'Allow/Deny IPv6 Net Consumer' conformance if:
-* TBA
+### 3.2.4 Conformance Clause 33: Scan Device Consumer
+An OpenC2 Consumer satisfies 'Scan Device Consumer' conformance if:
+* 3.2.4.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.4.2 **MUST** implement the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
 
-### 3.2.10 Conformance Clause 26: Set IPv4 Net Consumer
-An OpenC2 Producer satisfies 'Set IPv4 Net Consumer' conformance if:
+### 3.2.5 Conformance Clause 34: Scan Depth Consumer
+An OpenC2 Consumer satisfies 'Scan Depth Consumer' conformance if:
+* 3.2.5.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.5.2 **MUST** implement the 'er:scan_depth' Command Argument as a valid option for the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
+
+### 3.2.6 Conformance Clause 35: Periodic Scan Consumer
+An OpenC2 Consumer satisfies 'Periodic Scan Consumer' conformance if:
+* 3.2.6.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.6.2 **MUST** implement the 'er:periodic_scan' Command Argument as a valid option for the 'scan device' Command in accordance with [Section 2.3.1.1](#2311-scan-device) of this specification
+
+### 3.2.7 Conformance Clause 36: Contain Device Consumer
+An OpenC2 Consumer satisfies 'Contain Device Consumer' conformance if:
+* 3.2.7.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.7.2 **MUST** implement the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+* 3.2.7.3 **MUST** implement the 'er:device_containment' Command Argument in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+* 3.2.7.4 **MUST** implement the 'er:device_containment' Command Argument as a valid option for the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+
+### 3.2.8 Conformance Clause 37: Permitted Addresses Consumer
+An OpenC2 Consumer satisfies 'Permitted Addresses Consumer' conformance if:
+* 3.2.8.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.8.2 **MUST** implement the 'er:permitted_addresses' Command Argument as a valid option for the 'contain device' Command in accordance with [Section 2.3.4.1](#2341-contain-device) of this specification
+
+### 3.2.9 Conformance Clause 38: Allow Device Consumer
+An OpenC2 Consumer satisfies 'Contain Device Consumer' conformance if:
+* 3.2.9.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.9.2 **MUST** implement the 'allow device' Command in accordance with [Section 2.3.5.1](#2351-allow-device) of this specification
+
+### 3.2.10 Conformance Clause 39: Stop Device Consumer
+An OpenC2 Consumer satisfies 'Stop Device Consumer' conformance if:
 * 3.2.10.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.10.2 **MUST** implement the 'set ipv4_net' Command in accordance with [Section 2.3.8.1](#2381-set-ipv4-net) of this specification
-* 3.2.10.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.1](#2381-set-ipv4-net) of this specification
+* 3.2.10.2 **MUST** implement the 'stop device' Command in accordance with [Section 2.3.7.1](#2371-stop-device) of this specification
 
-### 3.2.11 Conformance Clause 27: Set IPv6 Net Consumer
-An OpenC2 Producer satisfies 'Set IPv6 Net Consumer' conformance if:
+### 3.2.11 Conformance Clause 40: Restart Device Consumer
+An OpenC2 Consumer satisfies 'Restart Device Consumer' conformance if:
 * 3.2.11.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.11.2 **MUST** implement the 'set ipv6_net' Command in accordance with [Section 2.3.8.2](#2382-set-ipv6-net) of this specification
-* 3.2.11.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.2](#2382-set-ipv6-net) of this specification
+* 3.2.11.2 **MUST** implement the 'restart device' Command in accordance with [Section 2.3.8.1](#2381-restart-device) of this specification
 
-### 3.2.12 Conformance Clause 28: Stop Process Consumer
-An OpenC2 Producer satisfies 'Process Consumer' conformance if:
+### 3.2.12 Conformance Clause 41: Deny File Consumer
+An OpenC2 Consumer satisfies 'Deny File Consumer' conformance if:
 * 3.2.12.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.12.2 **MUST** implement the 'stop process' Command in accordance with [Section 2.3.6.2](#2362-stop-process) of this specification
-* 3.2.12.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.6.2](#2362-stop-process) of this specification
+* 3.2.12.2 **MUST** implement the 'deny file' Command in accordance with [Section 2.3.3.2](#2332-deny-file) of this specification
 
-### 3.2.13 Conformance Clause 29: Registry Entry Consumer
-An OpenC2 Producer satisfies 'Registry Entry Consumer' conformance if:
+### 3.2.13 Conformance Clause 42: Contain File Consumer
+An OpenC2 Consumer satisfies 'Contain File Consumer' conformance if:
 * 3.2.13.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.13.2 **MUST** implement the 'set registry_entry' Command in accordance with [Section 2.3.8.3](#2383-set-erregistry-entry) of this specification
-* 3.2.13.3 **MUST** implement the 'create registry_entry' Command in accordance with [Section 2.3.10.1](#23101-create-erregistry-entry) of this specification
-* 3.2.13.4 **MUST** implement the 'delete registry_entry' Command in accordance with [Section 2.3.11.2](#23112-delete-erregistry-entry) of this specification
-* 3.2.13.5 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with the above sections <!-- Temporary description. I will split this conformance clause after the PR has been merged -->
+* 3.2.13.2 **MUST** implement the 'contain file' Command in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
+* 3.2.13.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
 
-### 3.2.14 Conformance Clause 30: Account Consumer
-An OpenC2 Producer satisfies 'Account Consumer' conformance if:
+### 3.2.14 Conformance Clause 43: Allow File Consumer
+An OpenC2 Consumer satisfies 'Allow File Consumer' conformance if:
 * 3.2.14.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.14.2 **MUST** implement the 'set account' Command in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
-* 3.2.14.3 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
+* 3.2.14.2 **MUST** implement the 'allow file' Command in accordance with [Section 2.3.5.3](#2353-allow-file) of this specification
+* 3.2.14.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.4.2](#2342-contain-file) of this specification
 
-### 3.2.15 Conformance Clause 31: Account Status Consumer
-An OpenC2 Producer satisfies 'Account Status Consumer' conformance if:
+### 3.2.15 Conformance Clause 44: Start File Consumer
+An OpenC2 Consumer satisfies 'Start File Consumer' conformance if:
 * 3.2.15.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.15.2 **MUST** implement the 'account-status' Command Argument as a valid option for the 'set account' command in accordance with [Section 2.3.8.4](#2384-set-eraccount) of this specification
+* 3.2.15.2 **MUST** implement the 'start file' Command in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
+* 3.2.15.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.6.1](#2361-start-file) of this specification
 
-### 3.2.16 Conformance Clause 32: Service Consumer
-An OpenC2 Producer satisfies 'Service Consumer' conformance if:
+### 3.2.16 Conformance Clause 45: Deny IPv4 Net Consumer
+An OpenC2 Consumer satisfies 'Deny IPv4 Net Consumer' conformance if:
 * 3.2.16.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
-* 3.2.16.2 **MUST** implement the 'stop service' Command in accordance with [Section 2.3.6.3](#2363-stop-erservice) of this specification
-* 3.2.16.2 **MUST** implement the 'delete service' Command in accordance with [Section 2.3.11.3](#23113-delete-erservice) of this specification
-* 3.2.16.2 **MUST** implement the 'er:Downstream-Device' Command Argument in accordance with the above sections <!-- Temporary description. I will split this conformance clause after the PR has been merged -->
 
--------
-# Annex A: Sample Commands
+### 3.2.17 Conformance Clause 46: Allow IPv4 Net Consumer
+An OpenC2 Consumer satisfies 'Allow IPv4 Net Consumer' conformance if:
+* 3.2.17.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
 
-_This section is non-normative_
+### 3.2.18 Conformance Clause 47: Set IPv4 Net Consumer
+An OpenC2 Consumer satisfies 'Set IPv4 Net Consumer' conformance if:
+* 3.2.18.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.18.2 **MUST** implement the 'set ipv4_net' Command in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
+* 3.2.18.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.1](#2391-set-ipv4-net) of this specification
 
-This section will summarize and provide examples of OpenC2 Commands as they pertain to er systems. The sample Commands will be encoded in verbose JSON.
+### 3.2.19 Conformance Clause 48: Deny IPv6 Net Consumer
+An OpenC2 Consumer satisfies 'Deny IPv6 Net Consumer' conformance if:
+* **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
 
-## A.1 deny, contain and allow
+### 3.2.20 Conformance Clause 49: Allow IPv6 Net Consumer
+An OpenC2 Consumer satisfies 'Allow IPv6 Net Consumer' conformance if:
+* **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
 
-### A.1.1 Ban a binary by hash on every endpoint
+### 3.2.21 Conformance Clause 50: Set IPv6 Net Consumer
+An OpenC2 Consumer satisfies 'Set IPv6 Net Consumer' conformance if:
+* 3.2.21.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.21.2 **MUST** implement the 'set ipv6_net' Command in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
+* 3.2.21.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.2](#2392-set-ipv6-net) of this specification
 
-**Command:**
+### 3.2.22 Conformance Clause 51: Stop Process Consumer
+An OpenC2 Consumer satisfies 'Process Consumer' conformance if:
+* 3.2.22.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.22.2 **MUST** implement the 'stop process' Command in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
+* 3.2.22.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.7.2](#2372-stop-process) of this specification
 
-```json
-{
-  "action": "deny",
-  "target": {
-    "file": {
-      "hashes": {
-        "sha256": "0a73291ab5607aef7db23863cf8e72f55bcb3c273bb47f00edf011515aeb5894"
-      }
-    }
-  },
-  "actuator": {
-    "er": {}
-  }
-}
-```
-**Responses:**
+### 3.2.23 Conformance Clause 52: Set Registry Entry Consumer
+An OpenC2 Consumer satisfies 'Registry Entry Consumer' conformance if:
+* 3.2.23.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.23.2 **MUST** implement the 'set registry_entry' Command in accordance with [Section 2.3.9.3](#2393-set-erregistry-entry) of this specification
+* 3.2.23.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
-Case One: the Actuator successfully issued the deny.
+### 3.2.24 Conformance Clause 53: Create Registry Entry Consumer
+An OpenC2 Consumer satisfies 'Registry Entry Consumer' conformance if:
+* 3.2.24.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.24.2 **MUST** implement the 'create er:registry_entry' Command in accordance with [Section 2.3.11.1](#23111-create-erregistry-entry) of this specification
+* 3.2.24.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
-```json
-{
-  "status": 200
-}
-```
+### 3.2.25 Conformance Clause 54: Delete Registry Entry Consumer
+An OpenC2 Consumer satisfies 'Registry Entry Consumer' conformance if:
+* 3.2.25.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.25.2 **MUST** implement the 'delete rer:egistry_entry' Command in accordance with [Section 2.3.12.2](#23122-delete-erregistry-entry) of this specification
+* 3.2.25.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
-Case Two: the Command failed due to a syntax error in the Command. Optional status text is ignored by the Producer, but may be added to provide error details for debugging or logging.
+### 3.2.26 Conformance Clause 55: Set Account Consumer
+An OpenC2 Consumer satisfies 'Account Consumer' conformance if:
+* 3.2.26.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.26.2 **MUST** implement the 'set er:account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* 3.2.26.3 **MUST** implement the 'er:account_status' Command Argument in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
+* 3.2.26.4 **MUST** implement the 'er:downstream_device' Command Argument in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
 
-```json
-{
-  "status": 400,
-  "status_text": "Validation Error: Target: flie"
-}
-```
+### 3.2.27 Conformance Clause 56: Account Status Consumers
+An OpenC2 Consumer satisfies 'Account-Status Consumers' conformance if:
+* 3.2.27.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.27.2 **MUST** implement the 'er:account_status' Command Argument as a valid option for the 'set account' Command in accordance with [Section 2.3.9.4](#2394-set-eraccount) of this specification
 
-Case Three: the Command failed because an Argument was not supported.
+### 3.2.28 Conformance Clause 57: Stop Service Consumer
+An OpenC2 Consumer satisfies 'Stop Service Consumer' conformance if:
+* 3.2.28.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.28.2 **MUST** implement the 'stop er:service' Command in accordance with [Section 2.3.7.3](#2373-stop-erservice) of this specification
+* 3.2.28.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
-```json
-{
-  "status": 501
-}
-```
+### 3.2.29 Conformance Clause 58: Delete Service Consumer
+An OpenC2 Consumer satisfies 'Delete Service Consumer' conformance if:
+* 3.2.29.1 **MUST** meet all of conformance criteria identified in Conformance Clause 1 of this specification
+* 3.2.29.2 **MUST** implement the 'delete er:service' Command in accordance with [Section 2.3.12.3](#23123-delete-erservice) of this specification
+* 3.2.29.3 **MUST** implement the 'er:downstream_device' Command Argument in accordance with the above sections
 
-### A.1.2 Network isolate a specific endpoint
-
-**Command:**
-
-```json
-{
-  "action": "contain",
-  "target": {
-    "device": {
-      "hostname": "DESKTOP-123ABC"
-    }
-  },
-  "args": {
-    "er": {
-      "device_containment":"network_isolation"
-    }
-   },
-  "actuator": {
-    "er": {}
-  }
-}
-
-```
-
-### A.1.X Network isolate an endpoint, but allow communication with selected IP and domain name addresses
-
-**Command:**
-
-```json
-{
-  "action": "contain",
-  "target": {
-    "device": {
-      "hostname": "DESKTOP-123ABC"
-    }
-  },
-  "args": {
-    "er": {
-      "device_containment":"network_isolation",
-      "permitted_addresses": {
-        "ipv_net": ["192.168.0.255"],
-        "domain_name": ["support.organization.tld", "wiki.organization.tld"]
-      }
-    }
-   },
-  "actuator": {
-    "er": {}
-  }
-}
-```
-
-### A.1.3 Allow unrestricted app execution on a group of endpoints
-
-**Command:**
-
-```json
-{
-  "action": "allow",
-  "target": {
-    "device": {
-      "hostname": "DESKTOP-123ABC"
-    }
-  },
-  "args": {
-    "er": {
-      "device_containment":"app_restriction"
-    }
-   },
-  "actuator": {
-    "er": {}
-  }
-}
-```
-
-## A.2 Set
-
-### A.2.1 Set an account on a specific endpoint to be enabled
-
-**Command:**
-
-```json
-{
-  "action": "set",
-  "target": {
-    "er": {
-      "account": {
-         "uid":"S-1-5-21-7375663-6890924511-1272660413-2944159"
-      }
-    }
-  },
-  "args": {
-    "er": {
-      "account_status":"enabled"
-    }
-   },
-  "actuator": {
-    "er": {
-       "hostname": "edr-oslo"
-    }
-  }
-}
-```
-
-### A.2.1 Set accounts on a group of endpoints to be disabled
-
-**Command:**
-
-```json
-{
-  "action": "set",
-  "target": {
-    "er": {
-      "account": {
-        "account_name":"sql_admin"
-      }
-    }
-  },
-  "args": {
-    "er": {
-      "account_status":"disabled"
-    }
-   },
-  "actuator": {
-    "er": {}
-  }
-}
-```
 
 -------
 
@@ -1640,11 +1602,197 @@ The following individuals have participated in the creation of this specificatio
 
 -------
 
+# Appendix D: Sample Commands
+
+_This section is non-normative_
+
+This section will summarize and provide examples of OpenC2 Commands as they pertain to er systems. The sample Commands will be encoded in verbose JSON.
+
+## A.1 deny, contain and allow
+
+### A.1.1 Ban a binary by hash on every Endpoint
+
+**Command:**
+
+```json
+{
+  "action": "deny",
+  "target": {
+    "file": {
+      "hashes": {
+        "sha256": "0a73291ab5607aef7db23863cf8e72f55bcb3c273bb47f00edf011515aeb5894"
+      }
+    }
+  },
+  "actuator": {
+    "er": {}
+  }
+}
+```
+**Responses:**
+
+Case One: the Actuator successfully issued the deny.
+
+```json
+{
+  "status": 200
+}
+```
+
+Case Two: the Command failed due to a syntax error in the Command. Optional status text is ignored by the Producer, but may be added to provide error details for debugging or logging.
+
+```json
+{
+  "status": 400,
+  "status_text": "Validation Error: Target: flie"
+}
+```
+
+Case Three: the Command failed because an Argument was not supported.
+
+```json
+{
+  "status": 501
+}
+```
+
+### A.1.2 Network isolate a specific Endpoint
+
+**Command:**
+
+```json
+{
+  "action": "contain",
+  "target": {
+    "device": {
+      "hostname": "DESKTOP-123ABC"
+    }
+  },
+  "args": {
+    "er": {
+      "device_containment":"network_isolation"
+    }
+   },
+  "actuator": {
+    "er": {}
+  }
+}
+
+```
+
+### A.1.X Network isolate an Endpoint, but allow communication with selected IP and domain name addresses
+
+**Command:**
+
+```json
+{
+  "action": "contain",
+  "target": {
+    "device": {
+      "hostname": "DESKTOP-123ABC"
+    }
+  },
+  "args": {
+    "er": {
+      "device_containment":"network_isolation",
+      "permitted_addresses": {
+        "ipv_net": ["192.168.0.255"],
+        "domain_name": ["support.organization.tld", "wiki.organization.tld"]
+      }
+    }
+   },
+  "actuator": {
+    "er": {}
+  }
+}
+```
+
+### A.1.3 Allow unrestricted app execution on a group of Endpoints
+
+**Command:**
+
+```json
+{
+  "action": "allow",
+  "target": {
+    "device": {
+      "hostname": "DESKTOP-123ABC"
+    }
+  },
+  "args": {
+    "er": {
+      "device_containment":"app_restriction"
+    }
+   },
+  "actuator": {
+    "er": {}
+  }
+}
+```
+
+## A.2 Set
+
+### A.2.1 Set an account on a specific Endpoint to be enabled
+
+**Command:**
+
+```json
+{
+  "action": "set",
+  "target": {
+    "er": {
+      "account": {
+         "uid":"S-1-5-21-7375663-6890924511-1272660413-2944159"
+      }
+    }
+  },
+  "args": {
+    "er": {
+      "account_status":"enabled"
+    }
+   },
+  "actuator": {
+    "er": {
+       "hostname": "edr-oslo"
+    }
+  }
+}
+```
+
+### A.2.1 Set accounts on a group of Endpoints to be disabled
+
+**Command:**
+
+```json
+{
+  "action": "set",
+  "target": {
+    "er": {
+      "account": {
+        "account_name":"sql_admin"
+      }
+    }
+  },
+  "args": {
+    "er": {
+      "account_status":"disabled"
+    }
+   },
+  "actuator": {
+    "er": {}
+  }
+}
+```
+
+-------
+
 # Appendix D. Notices
 
-Copyright © OASIS Open 2021. All Rights Reserved.
+<!-- Required section. Do not modify. -->
 
-All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr) may be found at the OASIS website.
+Copyright © OASIS Open 2022. All Rights Reserved.
+
+All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr/) may be found at the OASIS website.
 
 This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. However, this document itself may not be modified in any way, including by removing the copyright notice or references to OASIS, except as needed for the purpose of developing any document or deliverable produced by an OASIS Technical Committee (in which case the rules applicable to copyrights, as set forth in the OASIS IPR Policy, must be followed) or as required to translate it into languages other than English.
 
@@ -1660,4 +1808,4 @@ As stated in the OASIS IPR Policy, the following three paragraphs in brackets ap
 
 \[OASIS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this OASIS Standards Final Deliverable or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on OASIS' procedures with respect to rights in any document or deliverable produced by an OASIS Technical Committee can be found on the OASIS website. Copies of claims of rights made available for publication and any assurances of licenses to be made available, or the result of an attempt made to obtain a general license or permission for the use of such proprietary rights by implementers or users of this OASIS Standards Final Deliverable, can be obtained from the OASIS TC Administrator. OASIS makes no representation that any information or list of intellectual property rights will at any time be complete, or that any claims in such list are, in fact, Essential Claims.\]
 
-The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark for above guidance.
+The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark/ for above guidance.
